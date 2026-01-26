@@ -5,6 +5,10 @@
 ### [Diagrama de Integração de APIs](./DIAGRAMA-INTEGRACAO-API.md)
 Visualização executiva do fluxo de integração com APIs externas. Documento otimizado para apresentações executivas e tomada de decisão.
 
+**Formatos disponíveis:**
+- 📄 [Versão Markdown](./DIAGRAMA-INTEGRACAO-API.md) - Visualize diretamente no GitHub
+- 🌐 [Versão HTML Interativa](./diagrama-integracao.html) - Para apresentações e navegação offline
+
 ---
 
 ## 📁 Estrutura do Projeto

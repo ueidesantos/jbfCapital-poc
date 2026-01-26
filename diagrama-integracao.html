@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagrama de Integração - JBF Capital</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #1a202c;
+            line-height: 1.6;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            margin-top: 1rem;
+        }
+
+        .content {
+            padding: 2rem;
+        }
+
+        .section {
+            margin-bottom: 3rem;
+        }
+
+        .section h2 {
+            color: #1e40af;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            border-bottom: 3px solid #1e40af;
+            padding-bottom: 0.5rem;
+        }
+
+        .section h3 {
+            color: #2563eb;
+            font-size: 1.3rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .diagram-container {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 2px solid #e2e8f0;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .step {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .step h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .step p {
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .components {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .component {
+            background: #f0f9ff;
+            border-left: 5px solid #0ea5e9;
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+
+        .component h4 {
+            color: #0369a1;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .benefits {
+            background: #ecfdf5;
+            border-left: 5px solid #10b981;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        .benefits ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .benefits li {
+            padding: 0.5rem 0;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        .benefits li:before {
+            content: "✅";
+            position: absolute;
+            left: 0;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .tech-item {
+            background: #ede9fe;
+            color: #5b21b6;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .summary {
+            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+        }
+
+        .summary h3 {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .metric {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+        }
+
+        .metric-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .footer {
+            background: #f8fafc;
+            padding: 2rem;
+            text-align: center;
+            color: #64748b;
+            border-top: 2px solid #e2e8f0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        th {
+            background: #1e40af;
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 1rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:nth-child(even) {
+            background: #f8fafc;
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .container {
+                box-shadow: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            .content {
+                padding: 1.5rem;
+            }
+
+            .steps,
+            .components {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔗 Diagrama de Integração de APIs</h1>
+            <p>JBF Capital - Visão Executiva do Fluxo de Integração</p>
+            <p style="margin-top: 0.5rem; font-size: 0.9rem; opacity: 0.8;">
+                Documento otimizado para apresentações executivas e tomada de decisão
+            </p>
+        </div>
+
+        <div class="content">
+            <div class="section">
+                <h2>📊 Visão Geral do Sistema</h2>
+                <p>
+                    Este diagrama apresenta de forma simples como nossa plataforma JBF Capital se conecta 
+                    com a API da Creditas para oferecer simulações de empréstimo Home Equity aos nossos clientes.
+                </p>
+
+                <div class="diagram-container">
+                    <h3 style="text-align: center; color: #1e40af; margin-bottom: 2rem;">
+                        Fluxo Principal de Integração
+                    </h3>
+                    <div class="mermaid">
+                        flowchart TB
+                            classDef plataforma fill:#1e40af,stroke:#1e3a8a,stroke-width:3px,color:#fff
+                            classDef api fill:#059669,stroke:#047857,stroke-width:3px,color:#fff
+                            
+                            Cliente[👤 Cliente JBF Capital<br/>Acessa Plataforma Web]
+                            Plataforma[🏢 Plataforma JBF Capital<br/>Sistema Web de Simulação]
+                            API[🔗 API Creditas<br/>Serviço de Empréstimos]
+                            
+                            Cliente -->|1. Preenche dados da simulação| Plataforma
+                            
+                            Plataforma -->|2. Solicita autenticação| API
+                            API -->|3. Retorna token de acesso| Plataforma
+                            
+                            Plataforma -->|4. Consulta elegibilidade| API
+                            API -->|5. Confirma aprovação| Plataforma
+                            
+                            Plataforma -->|6. Solicita ofertas disponíveis| API
+                            API -->|7. Retorna propostas de empréstimo| Plataforma
+                            
+                            Plataforma -->|8. Apresenta melhores opções| Cliente
+                            
+                            class Cliente,Plataforma plataforma
+                            class API api
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>🔄 Etapas do Processo</h2>
+                
+                <div class="steps">
+                    <div class="step">
+                        <h4>1️⃣ Cliente Inicia Simulação</h4>
+                        <p>O cliente acessa nossa plataforma web e informa valor do imóvel, valor desejado do empréstimo e prazo de pagamento.</p>
+                    </div>
+                    
+                    <div class="step">
+                        <h4>2️⃣ Autenticação Segura</h4>
+                        <p>Nossa plataforma se conecta de forma segura com a API da Creditas usando credenciais autorizadas.</p>
+                    </div>
+                    
+                    <div class="step">
+                        <h4>3️⃣ Verificação de Elegibilidade</h4>
+                        <p>Consultamos se o cliente pode solicitar o empréstimo baseado nos dados informados.</p>
+                    </div>
+                    
+                    <div class="step">
+                        <h4>4️⃣ Busca de Ofertas</h4>
+                        <p>Solicitamos as melhores opções de empréstimo disponíveis para o perfil do cliente.</p>
+                    </div>
+                    
+                    <div class="step">
+                        <h4>5️⃣ Apresentação de Resultados</h4>
+                        <p>O cliente visualiza múltiplas ofertas com valor da parcela, taxa de juros, prazo e custo total.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>🏗️ Componentes do Sistema</h2>
+                
+                <div class="components">
+                    <div class="component">
+                        <h4>🏢 Plataforma JBF Capital</h4>
+                        <p><strong>Descrição:</strong> Sistema web responsivo</p>
+                        <p><strong>Responsabilidade:</strong> Interface com cliente e gerenciamento de solicitações</p>
+                    </div>
+                    
+                    <div class="component">
+                        <h4>🔗 API Creditas</h4>
+                        <p><strong>Descrição:</strong> Serviço externo de empréstimos</p>
+                        <p><strong>Responsabilidade:</strong> Processamento de elegibilidade e geração de ofertas</p>
+                    </div>
+                    
+                    <div class="component">
+                        <h4>👤 Cliente</h4>
+                        <p><strong>Descrição:</strong> Usuário final</p>
+                        <p><strong>Responsabilidade:</strong> Inicia processo de simulação</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>🔌 APIs Integradas</h2>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>API</th>
+                            <th>Finalidade</th>
+                            <th>Requisição</th>
+                            <th>Resposta</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>🔐 Autenticação</strong></td>
+                            <td>Garantir acesso seguro ao sistema</td>
+                            <td>Credenciais da JBF Capital</td>
+                            <td>Token de acesso temporário</td>
+                        </tr>
+                        <tr>
+                            <td><strong>✅ Elegibilidade</strong></td>
+                            <td>Verificar se cliente pode solicitar empréstimo</td>
+                            <td>Dados do imóvel e valor desejado</td>
+                            <td>Aprovado ou não aprovado</td>
+                        </tr>
+                        <tr>
+                            <td><strong>💰 Ofertas</strong></td>
+                            <td>Buscar melhores condições de empréstimo</td>
+                            <td>Perfil do cliente e valor solicitado</td>
+                            <td>Lista de ofertas personalizadas</td>
+                        </tr>
+                        <tr>
+                            <td><strong>📝 Proposta</strong></td>
+                            <td>Formalizar interesse do cliente</td>
+                            <td>Oferta escolhida e dados completos</td>
+                            <td>Número da proposta e próximos passos</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="section">
+                <h2>📈 Fluxo Detalhado de Dados</h2>
+                
+                <div class="diagram-container">
+                    <div class="mermaid">
+                        sequenceDiagram
+                            participant C as 👤 Cliente
+                            participant P as 🏢 Plataforma JBF
+                            participant A as 🔗 API Creditas
+
+                            Note over C,A: INÍCIO DO PROCESSO
+
+                            C->>P: Acessa plataforma e preenche formulário
+                            Note over P: Valida dados localmente
+                            
+                            P->>A: Solicita autenticação
+                            A->>P: Retorna token de acesso
+                            
+                            P->>A: Envia dados para verificação de elegibilidade
+                            A->>P: Confirma: Cliente está elegível
+                            
+                            P->>A: Solicita ofertas personalizadas
+                            A->>P: Retorna lista de ofertas (taxas, prazos, parcelas)
+                            
+                            P->>C: Exibe ofertas ao cliente
+                            
+                            C->>P: Seleciona oferta desejada
+                            P->>A: Cria proposta formal
+                            A->>P: Confirma proposta criada
+                            
+                            P->>C: Apresenta número da proposta e próximos passos
+                            
+                            Note over C,A: FIM DO PROCESSO
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>✨ Benefícios da Integração</h2>
+                
+                <div class="benefits">
+                    <ul>
+                        <li><strong>Agilidade:</strong> Resposta em tempo real para o cliente</li>
+                        <li><strong>Precisão:</strong> Ofertas baseadas em dados reais e atualizados</li>
+                        <li><strong>Segurança:</strong> Comunicação criptografada entre sistemas</li>
+                        <li><strong>Escalabilidade:</strong> Capacidade de atender múltiplos clientes simultaneamente</li>
+                        <li><strong>Transparência:</strong> Cliente vê todas as opções disponíveis</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>💻 Tecnologias Utilizadas</h2>
+                
+                <div class="tech-stack">
+                    <span class="tech-item">HTML5</span>
+                    <span class="tech-item">CSS3</span>
+                    <span class="tech-item">JavaScript</span>
+                    <span class="tech-item">HTTPS</span>
+                    <span class="tech-item">JSON</span>
+                    <span class="tech-item">OAuth 2.0</span>
+                    <span class="tech-item">REST API</span>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="summary">
+                    <h3>📌 Resumo Executivo</h3>
+                    <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">
+                        Nossa integração com a API da Creditas permite que clientes JBF Capital tenham acesso 
+                        instantâneo a simulações de empréstimo Home Equity de forma totalmente digital e segura. 
+                        O processo é rápido, transparente e oferece múltiplas opções para o cliente escolher 
+                        a que melhor se adequa ao seu perfil.
+                    </p>
+                    
+                    <div class="metrics">
+                        <div class="metric">
+                            <div class="metric-value">&lt; 2 seg</div>
+                            <div class="metric-label">Tempo de resposta</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">24/7</div>
+                            <div class="metric-label">Disponibilidade</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">100%</div>
+                            <div class="metric-label">Segurança</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p><strong>JBF Capital</strong> © 2026 - Todos os direitos reservados</p>
+            <p style="margin-top: 0.5rem; font-size: 0.9rem;">Última atualização: Janeiro 2026</p>
+        </div>
+    </div>
+
+    <script>
+        mermaid.initialize({ 
+            startOnLoad: true,
+            theme: 'default',
+            flowchart: {
+                useMaxWidth: true,
+                htmlLabels: true,
+                curve: 'basis'
+            },
+            sequence: {
+                diagramMarginX: 50,
+                diagramMarginY: 10,
+                actorMargin: 50,
+                width: 150,
+                height: 65,
+                boxMargin: 10,
+                boxTextMargin: 5,
+                noteMargin: 10,
+                messageMargin: 35
+            }
+        });
+    </script>
+</body>
+</html>
