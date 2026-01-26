@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creditas Home Equity API - Documentação</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #fafafa;
+            color: #3b4151;
+        }
+
+        .header {
+            background: #1e293b;
+            color: white;
+            padding: 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            color: #94a3b8;
+            font-size: 0.95rem;
+        }
+
+        .base-url {
+            background: #0f172a;
+            padding: 1rem 2rem;
+            border-bottom: 1px solid #334155;
+        }
+
+        .base-url code {
+            color: #22d3ee;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .endpoint {
+            background: white;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            border: 1px solid #e2e8f0;
+            overflow: hidden;
+        }
+
+        .endpoint-header {
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: background 0.2s;
+        }
+
+        .endpoint-header:hover {
+            background: #f8fafc;
+        }
+
+        .method {
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            min-width: 60px;
+            text-align: center;
+        }
+
+        .method.post {
+            background: #10b981;
+            color: white;
+        }
+
+        .method.get {
+            background: #3b82f6;
+            color: white;
+        }
+
+        .path {
+            font-family: 'Courier New', monospace;
+            font-size: 0.95rem;
+            flex: 1;
+        }
+
+        .endpoint-body {
+            display: none;
+            border-top: 1px solid #e2e8f0;
+            padding: 1.5rem;
+            background: #f8fafc;
+        }
+
+        .endpoint-body.active {
+            display: block;
+        }
+
+        .section {
+            margin-bottom: 1.5rem;
+        }
+
+        .section h3 {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            color: #64748b;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+
+        .code-block {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 1rem;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            overflow-x: auto;
+            white-space: pre;
+        }
+
+        .try-it {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 6px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .input-group {
+            margin-bottom: 1rem;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .btn {
+            background: #3b82f6;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn:hover {
+            background: #2563eb;
+        }
+
+        .response {
+            margin-top: 1rem;
+            display: none;
+        }
+
+        .response.active {
+            display: block;
+        }
+
+        .response-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .status-code {
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        .status-code.success {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .status-code.error {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .description {
+            color: #64748b;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #e0e7ff;
+            color: #3730a3;
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🏠 Creditas Home Equity API</h1>
+        <p>Documentação interativa - Mock Server</p>
+    </div>
+
+    <div class="base-url">
+        <code>Base URL: https://85161e3c-30a2-420a-b976-c47884d97a74.mock.pstmn.io</code>
+    </div>
+
+    <div class="container">
+        <!-- Authentication -->
+        <div class="endpoint">
+            <div class="endpoint-header" onclick="toggleEndpoint(this)">
+                <span class="method post">POST</span>
+                <span class="path">/api/affiliate_clients/tokens</span>
+                <span class="tag">Authentication</span>
+            </div>
+            <div class="endpoint-body">
+                <p class="description">
+                    Autenticação OAuth2 Client Credentials. Retorna um access token para ser usado nos demais endpoints.
+                </p>
+
+                <div class="section">
+                    <h3>Request Body</h3>
+                    <div class="code-block">{
+  "client_id": "your-client-id",
+  "client_secret": "your-client-secret",
+  "grant_type": "client_credentials"
+}</div>
+                </div>
+
+                <div class="section">
+                    <h3>Response Example (200 OK)</h3>
+                    <div class="code-block">{
+  "access_token": "mocked-token-abc123xyz789",
+  "token_type": "bearer",
+  "expires_in": 7200,
+  "scope": "read write",
+  "created_at": 1737849600
+}</div>
+                </div>
+
+                <div class="section">
+                    <h3>Try it out</h3>
+                    <div class="try-it">
+                        <div class="input-group">
+                            <label>Request Body (JSON)</label>
+                            <textarea id="auth-body">{
+  "client_id": "your-client-id",
+  "client_secret": "your-client-secret",
+  "grant_type": "client_credentials"
+}</textarea>
+                        </div>
+                        <button class="btn" onclick="executeRequest('auth')">Execute</button>
+                        <div class="response" id="auth-response">
+                            <div class="response-header">
+                                <span class="status-code success" id="auth-status"></span>
+                            </div>
+                            <div class="code-block" id="auth-result"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Eligibility Check -->
+        <div class="endpoint">
+            <div class="endpoint-header" onclick="toggleEndpoint(this)">
+                <span class="method post">POST</span>
+                <span class="path">/eligibility</span>
+                <span class="tag">Eligibility</span>
+            </div>
+            <div class="endpoint-body">
+                <p class="description">
+                    Verifica a elegibilidade do cliente para Home Equity com base em informações básicas.
+                </p>
+
+                <div class="section">
+                    <h3>Request Body</h3>
+                    <div class="code-block">{
+  "product": "HOME_EQUITY",
+  "cpf": "12345678900",
+  "propertyValue": 500000,
+  "requestedAmount": 250000
+}</div>
+                </div>
+
+                <div class="section">
+                    <h3>Response Example (200 OK) - Eligible</h3>
+                    <div class="code-block">{
+  "product": "HOME_EQUITY",
+  "eligible": true,
+  "reason": null,
+  "maxAmount": 350000,
+  "ltv": 70,
+  "checkDate": "2026-01-26T10:00:00Z"
+}</div>
+                </div>
+
+                <div class="section">
+                    <h3>Try it out</h3>
+                    <div class="try-it">
+                        <div class="input-group">
+                            <label>Authorization Token</label>
+                            <textarea id="eligibility-token" style="min-height: 50px;">Bearer mocked-token-abc123xyz789</textarea>
+                        </div>
+                        <div class="input-group">
+                            <label>Request Body (JSON)</label>
+                            <textarea id="eligibility-body">{
+  "product": "HOME_EQUITY",
+  "cpf": "12345678900",
+  "propertyValue": 500000,
+  "requestedAmount": 250000
+}</textarea>
+                        </div>
+                        <button class="btn" onclick="executeRequest('eligibility')">Execute</button>
+                        <div class="response" id="eligibility-response">
+                            <div class="response-header">
+                                <span class="status-code success" id="eligibility-status"></span>
+                            </div>
+                            <div class="code-block" id="eligibility-result"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Get Offers -->
+        <div class="endpoint">
+            <div class="endpoint-header" onclick="toggleEndpoint(this)">
+                <span class="method post">POST</span>
+                <span class="path">/offers</span>
+                <span class="tag">Offers</span>
+            </div>
+            <div class="endpoint-body">
+                <p class="description">
+                    Retorna ofertas de Home Equity disponíveis para o cliente baseado nas informações fornecidas.
+                </p>
+
+                <div class="section">
+                    <h3>Request Body</h3>
+                    <div class="code-block">{
+  "productType": "HOME_EQUITY",
+  "cpf": "12345678900",
+  "requestedAmount": 250000,
+  "propertyValue": 500000
+}</div>
+                </div>
+
+                <div class="section">
+                    <h3>Response Example (200 OK)</h3>
+                    <div class="code-block">{
+  "offers": [
+    {
+      "id": "OFR-MOCK-12345",
+      "productType": "HOME_EQUITY",
+      "amount": 250000,
+      "rate": 1.2,
+      "monthlyRate": 0.12,
+      "installments": 120,
+      "monthlyPayment": 3583.33,
+      "cet": 1.35,
+      "iof": 1250.00,
+      "validUntil": "2026-02-26T23:59:59Z"
+    }
+  ]
+}</div>
+                </div>
+
+                <div class="section">
+                    <h3>Try it out</h3>
+                    <div class="try-it">
+                        <div class="input-group">
+                            <label>Authorization Token</label>
+                            <textarea id="offers-token" style="min-height: 50px;">Bearer mocked-token-abc123xyz789</textarea>
+                        </div>
+                        <div class="input-group">
+                            <label>Request Body (JSON)</label>
+                            <textarea id="offers-body">{
+  "productType": "HOME_EQUITY",
+  "cpf": "12345678900",
+  "requestedAmount": 250000,
+  "propertyValue": 500000
+}</textarea>
+                        </div>
+                        <button class="btn" onclick="executeRequest('offers')">Execute</button>
+                        <div class="response" id="offers-response">
+                            <div class="response-header">
+                                <span class="status-code success" id="offers-status"></span>
+                            </div>
+                            <div class="code-block" id="offers-result"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Create Proposal -->
+        <div class="endpoint">
+            <div class="endpoint-header" onclick="toggleEndpoint(this)">
+                <span class="method post">POST</span>
+                <span class="path">/proposals</span>
+                <span class="tag">Proposals</span>
+            </div>
+            <div class="endpoint-body">
+                <p class="description">
+                    Cria uma nova proposta de Home Equity para o cliente.
+                </p>
+
+                <div class="section">
+                    <h3>Request Body</h3>
+                    <div class="code-block">{
+  "offerId": "OFR-MOCK-12345",
+  "customer": {
+    "cpf": "12345678900",
+    "name": "João Silva",
+    "email": "joao.silva@email.com",
+    "phone": "11999999999"
+  },
+  "property": {
+    "address": "Rua Exemplo, 123",
+    "city": "São Paulo",
+    "state": "SP",
+    "zipCode": "01234567",
+    "estimatedValue": 500000
+  }
+}</div>
+                </div>
+
+                <div class="section">
+                    <h3>Response Example (201 Created)</h3>
+                    <div class="code-block">{
+  "id": "B2B-MOCK-67890",
+  "legacyId": "mock-legacy-id-abc123",
+  "productType": "HOME_EQUITY",
+  "status": "PENDING_DOCUMENTATION",
+  "amount": 250000,
+  "createdAt": "2026-01-26T10:30:00Z",
+  "offerId": "OFR-MOCK-12345",
+  "nextSteps": [
+    "Upload de documentos pessoais",
+    "Upload de documentos do imóvel",
+    "Agendamento de avaliação"
+  ]
+}</div>
+                </div>
+
+                <div class="section">
+                    <h3>Try it out</h3>
+                    <div class="try-it">
+                        <div class="input-group">
+                            <label>Authorization Token</label>
+                            <textarea id="proposals-token" style="min-height: 50px;">Bearer mocked-token-abc123xyz789</textarea>
+                        </div>
+                        <div class="input-group">
+                            <label>Request Body (JSON)</label>
+                            <textarea id="proposals-body">{
+  "offerId": "OFR-MOCK-12345",
+  "customer": {
+    "cpf": "12345678900",
+    "name": "João Silva",
+    "email": "joao.silva@email.com",
+    "phone": "11999999999"
+  },
+  "property": {
+    "address": "Rua Exemplo, 123",
+    "city": "São Paulo",
+    "state": "SP",
+    "zipCode": "01234567",
+    "estimatedValue": 500000
+  }
+}</textarea>
+                        </div>
+                        <button class="btn" onclick="executeRequest('proposals')">Execute</button>
+                        <div class="response" id="proposals-response">
+                            <div class="response-header">
+                                <span class="status-code success" id="proposals-status"></span>
+                            </div>
+                            <div class="code-block" id="proposals-result"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Get Proposal Status -->
+        <div class="endpoint">
+            <div class="endpoint-header" onclick="toggleEndpoint(this)">
+                <span class="method get">GET</span>
+                <span class="path">/proposals/{proposalId}</span>
+                <span class="tag">Proposals</span>
+            </div>
+            <div class="endpoint-body">
+                <p class="description">
+                    Consulta o status de uma proposta existente.
+                </p>
+
+                <div class="section">
+                    <h3>Path Parameters</h3>
+                    <div class="code-block">proposalId: B2B-MOCK-67890</div>
+                </div>
+
+                <div class="section">
+                    <h3>Response Example (200 OK)</h3>
+                    <div class="code-block">{
+  "id": "B2B-MOCK-67890",
+  "legacyId": "mock-legacy-id-abc123",
+  "productType": "HOME_EQUITY",
+  "status": "IN_ANALYSIS",
+  "amount": 250000,
+  "createdAt": "2026-01-26T10:30:00Z",
+  "updatedAt": "2026-01-26T14:15:00Z",
+  "customer": {
+    "cpf": "12345678900",
+    "name": "João Silva"
+  },
+  "timeline": [
+    {
+      "status": "PENDING_DOCUMENTATION",
+      "date": "2026-01-26T10:30:00Z"
+    },
+    {
+      "status": "IN_ANALYSIS",
+      "date": "2026-01-26T14:15:00Z"
+    }
+  ]
+}</div>
+                </div>
+
+                <div class="section">
+                    <h3>Try it out</h3>
+                    <div class="try-it">
+                        <div class="input-group">
+                            <label>Authorization Token</label>
+                            <textarea id="proposal-status-token" style="min-height: 50px;">Bearer mocked-token-abc123xyz789</textarea>
+                        </div>
+                        <div class="input-group">
+                            <label>Proposal ID</label>
+                            <textarea id="proposal-id" style="min-height: 50px;">B2B-MOCK-67890</textarea>
+                        </div>
+                        <button class="btn" onclick="executeRequest('proposal-status')">Execute</button>
+                        <div class="response" id="proposal-status-response">
+                            <div class="response-header">
+                                <span class="status-code success" id="proposal-status-status"></span>
+                            </div>
+                            <div class="code-block" id="proposal-status-result"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const BASE_URL = 'https://85161e3c-30a2-420a-b976-c47884d97a74.mock.pstmn.io';
+
+        function toggleEndpoint(header) {
+            const body = header.nextElementSibling;
+            body.classList.toggle('active');
+        }
+
+        async function executeRequest(type) {
+            const endpoints = {
+                'auth': {
+                    url: '/api/affiliate_clients/tokens',
+                    method: 'POST',
+                    bodyId: 'auth-body',
+                    resultId: 'auth-result',
+                    statusId: 'auth-status',
+                    responseId: 'auth-response'
+                },
+                'eligibility': {
+                    url: '/eligibility',
+                    method: 'POST',
+                    bodyId: 'eligibility-body',
+                    tokenId: 'eligibility-token',
+                    resultId: 'eligibility-result',
+                    statusId: 'eligibility-status',
+                    responseId: 'eligibility-response'
+                },
+                'offers': {
+                    url: '/offers',
+                    method: 'POST',
+                    bodyId: 'offers-body',
+                    tokenId: 'offers-token',
+                    resultId: 'offers-result',
+                    statusId: 'offers-status',
+                    responseId: 'offers-response'
+                },
+                'proposals': {
+                    url: '/proposals',
+                    method: 'POST',
+                    bodyId: 'proposals-body',
+                    tokenId: 'proposals-token',
+                    resultId: 'proposals-result',
+                    statusId: 'proposals-status',
+                    responseId: 'proposals-response'
+                },
+                'proposal-status': {
+                    url: '/proposals/{id}',
+                    method: 'GET',
+                    tokenId: 'proposal-status-token',
+                    proposalIdElement: 'proposal-id',
+                    resultId: 'proposal-status-result',
+                    statusId: 'proposal-status-status',
+                    responseId: 'proposal-status-response'
+                }
+            };
+
+            const config = endpoints[type];
+            const headers = {
+                'Content-Type': 'application/json'
+            };
+
+            let body = null;
+            let url = BASE_URL + config.url;
+
+            if (config.tokenId) {
+                const token = document.getElementById(config.tokenId).value.trim();
+                headers['Authorization'] = token;
+            }
+
+            if (config.bodyId) {
+                body = document.getElementById(config.bodyId).value;
+            }
+
+            if (config.proposalIdElement) {
+                const proposalId = document.getElementById(config.proposalIdElement).value.trim();
+                url = url.replace('{id}', proposalId);
+            }
+
+            try {
+                const options = {
+                    method: config.method,
+                    headers: headers
+                };
+
+                if (body && config.method !== 'GET') {
+                    options.body = body;
+                }
+
+                const response = await fetch(url, options);
+                const data = await response.json();
+
+                const resultElement = document.getElementById(config.resultId);
+                const statusElement = document.getElementById(config.statusId);
+                const responseElement = document.getElementById(config.responseId);
+
+                resultElement.textContent = JSON.stringify(data, null, 2);
+                statusElement.textContent = `${response.status} ${response.statusText}`;
+                statusElement.className = `status-code ${response.ok ? 'success' : 'error'}`;
+                responseElement.classList.add('active');
+
+            } catch (error) {
+                const resultElement = document.getElementById(config.resultId);
+                const statusElement = document.getElementById(config.statusId);
+                const responseElement = document.getElementById(config.responseId);
+
+                resultElement.textContent = `Error: ${error.message}`;
+                statusElement.textContent = 'Error';
+                statusElement.className = 'status-code error';
+                responseElement.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>
