@@ -142,7 +142,7 @@ function applyPhoneMask(input) {
     
     // Apply mask based on length
     if (value.length <= 10) {
-        // (11) 9999-9999 or (11) 9999-9999
+        // Format for 10 digits: (11) 9999-9999
         value = value.replace(/^(\d{2})(\d{0,4})(\d{0,4}).*/, (match, p1, p2, p3) => {
             let result = '';
             if (p1) result = `(${p1}`;
@@ -151,7 +151,7 @@ function applyPhoneMask(input) {
             return result;
         });
     } else {
-        // (11) 99999-9999
+        // Format for 11 digits: (11) 99999-9999
         value = value.replace(/^(\d{2})(\d{5})(\d{4}).*/, '($1) $2-$3');
     }
     
@@ -199,9 +199,12 @@ function validateField(field) {
         if (cleanPhone.length < 10 || cleanPhone.length > 11) {
             isValid = false;
             errorMessage = 'Número de celular inválido';
-        } else if (cleanPhone.length === 11 && cleanPhone[2] !== '9') {
-            isValid = false;
-            errorMessage = 'Número de celular deve começar com 9';
+        } else if (cleanPhone.length === 11) {
+            // For 11-digit numbers (mobile), third digit must be 9
+            if (cleanPhone[2] !== '9') {
+                isValid = false;
+                errorMessage = 'Número de celular deve começar com 9';
+            }
         }
     }
 
@@ -557,8 +560,8 @@ function openWhatsApp() {
         return;
     }
 
-    // Format phone number with country code
-    const formattedPhone = `55${phoneNumber}`;
+    // Format phone number with country code (only if not already present)
+    const formattedPhone = phoneNumber.startsWith('55') ? phoneNumber : `55${phoneNumber}`;
 
     // Encode the message for URL
     const encodedMessage = encodeURIComponent(message);
