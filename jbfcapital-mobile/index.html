@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Simulação de Empréstimo Home Equity - JBF Capital">
+    <title>Home Equity - JBF Capital</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1>JBF Capital</h1>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Hero Section -->
+            <section class="hero">
+                <h2 class="hero-title">Empréstimo Home Equity</h2>
+                <p class="hero-subtitle">Use seu imóvel como garantia e conquiste as melhores taxas do mercado</p>
+            </section>
+
+            <!-- Simulation Form -->
+            <section class="simulation-section">
+                <div class="card">
+                    <h3 class="card-title">Simule seu empréstimo</h3>
+                    
+                    <form id="simulationForm" class="simulation-form" novalidate>
+                        <!-- Property Value -->
+                        <div class="form-group">
+                            <label for="propertyValue" class="form-label">
+                                Valor do imóvel
+                                <span class="required">*</span>
+                            </label>
+                            <div class="input-wrapper">
+                                <span class="input-prefix">R$</span>
+                                <input 
+                                    type="text" 
+                                    id="propertyValue" 
+                                    name="propertyValue"
+                                    class="form-input" 
+                                    placeholder="500.000"
+                                    required
+                                    aria-required="true"
+                                    aria-describedby="propertyValueHelp"
+                                >
+                            </div>
+                            <small id="propertyValueHelp" class="form-help">Digite o valor estimado do seu imóvel</small>
+                            <span class="form-error" id="propertyValueError"></span>
+                        </div>
+
+                        <!-- Requested Amount -->
+                        <div class="form-group">
+                            <label for="requestedAmount" class="form-label">
+                                Valor desejado do empréstimo
+                                <span class="required">*</span>
+                            </label>
+                            <div class="input-wrapper">
+                                <span class="input-prefix">R$</span>
+                                <input 
+                                    type="text" 
+                                    id="requestedAmount" 
+                                    name="requestedAmount"
+                                    class="form-input" 
+                                    placeholder="250.000"
+                                    required
+                                    aria-required="true"
+                                    aria-describedby="requestedAmountHelp"
+                                >
+                            </div>
+                            <small id="requestedAmountHelp" class="form-help">Até 70% do valor do imóvel</small>
+                            <span class="form-error" id="requestedAmountError"></span>
+                        </div>
+
+                        <!-- Term Selection -->
+                        <div class="form-group">
+                            <label for="term" class="form-label">
+                                Prazo desejado
+                                <span class="required">*</span>
+                            </label>
+                            <select 
+                                id="term" 
+                                name="term"
+                                class="form-select"
+                                required
+                                aria-required="true"
+                            >
+                                <option value="">Selecione o prazo</option>
+                                <option value="12">12 meses (1 ano)</option>
+                                <option value="24">24 meses (2 anos)</option>
+                                <option value="36">36 meses (3 anos)</option>
+                                <option value="48">48 meses (4 anos)</option>
+                                <option value="60">60 meses (5 anos)</option>
+                                <option value="84">84 meses (7 anos)</option>
+                                <option value="96">96 meses (8 anos)</option>
+                                <option value="120">120 meses (10 anos)</option>
+                                <option value="180">180 meses (15 anos)</option>
+                                <option value="240">240 meses (20 anos)</option>
+                            </select>
+                            <span class="form-error" id="termError"></span>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" class="btn btn-primary" id="simulateBtn">
+                            <span class="btn-text">Simular Empréstimo</span>
+                            <span class="btn-loader" style="display: none;"></span>
+                        </button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Results Section -->
+            <section class="results-section" id="resultsSection" style="display: none;">
+                <div class="card">
+                    <h3 class="card-title">Resultado da Simulação</h3>
+                    
+                    <!-- Offers Container -->
+                    <div id="offersContainer" class="offers-container">
+                        <!-- Offers will be dynamically inserted here -->
+                    </div>
+
+                    <!-- No Results Message -->
+                    <div id="noResultsMessage" class="no-results" style="display: none;">
+                        <p>Não encontramos ofertas disponíveis para os valores informados.</p>
+                        <p class="help-text">Tente ajustar os valores ou o prazo desejado.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Error Section -->
+            <section class="error-section" id="errorSection" style="display: none;">
+                <div class="card error-card">
+                    <h3 class="error-title">Ops! Algo deu errado</h3>
+                    <p id="errorMessage" class="error-message"></p>
+                    <button class="btn btn-secondary" onclick="location.reload()">Tentar Novamente</button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="footer-text">&copy; 2026 JBF Capital. Todos os direitos reservados.</p>
+            <p class="footer-disclaimer">
+                POC - Proof of Concept. Simulação de valores para fins demonstrativos.
+            </p>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
