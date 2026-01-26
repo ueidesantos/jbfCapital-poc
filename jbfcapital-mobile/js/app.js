@@ -50,7 +50,18 @@ const elements = {
     offersContainer: document.getElementById('offersContainer'),
     noResultsMessage: document.getElementById('noResultsMessage'),
     errorSection: document.getElementById('errorSection'),
-    errorMessage: document.getElementById('errorMessage')
+    errorMessage: document.getElementById('errorMessage'),
+    whatsappContainer: document.getElementById('whatsappContainer'),
+    whatsappBtn: document.getElementById('whatsappBtn')
+};
+
+// ===================================
+// WhatsApp Configuration
+// ===================================
+
+const WHATSAPP_CONFIG = {
+    PHONE_NUMBER: '5511993652951', // Format: country code + area code + number
+    BASE_URL: 'https://wa.me/'
 };
 
 // ===================================
@@ -405,6 +416,7 @@ function displayOffers(offers) {
     if (!offers || offers.length === 0) {
         elements.offersContainer.innerHTML = '';
         elements.noResultsMessage.style.display = 'block';
+        elements.whatsappContainer.style.display = 'none';
         elements.resultsSection.style.display = 'block';
         return;
     }
@@ -419,10 +431,76 @@ function displayOffers(offers) {
 
     elements.offersContainer.innerHTML = offersHTML;
     elements.noResultsMessage.style.display = 'none';
+    elements.whatsappContainer.style.display = 'block';
     elements.resultsSection.style.display = 'block';
 
     // Scroll to results
     elements.resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+// ===================================
+// WhatsApp Integration
+// ===================================
+
+/**
+ * Generate WhatsApp message with simulation data
+ */
+function generateWhatsAppMessage() {
+    const { propertyValue, requestedAmount, term } = appState.formData;
+    const bestOffer = appState.currentOffers.length > 0 ? appState.currentOffers[0] : null;
+    
+    if (!bestOffer) {
+        return null;
+    }
+
+    // Calculate installment period text
+    const installmentYears = Math.floor(bestOffer.installments / 12);
+    const installmentMonths = bestOffer.installments % 12;
+    const installmentText = installmentYears > 0 
+        ? `${installmentYears} ${installmentYears === 1 ? 'ano' : 'anos'}${installmentMonths > 0 ? ` e ${installmentMonths} ${installmentMonths === 1 ? 'mês' : 'meses'}` : ''}`
+        : `${installmentMonths} ${installmentMonths === 1 ? 'mês' : 'meses'}`;
+
+    // Build the message
+    let message = `*Simulação de Empréstimo Home Equity - JBF Capital*\n\n`;
+    message += `📋 *Dados da Simulação:*\n`;
+    message += `• Valor do Imóvel: ${formatCurrency(propertyValue)}\n`;
+    message += `• Valor Solicitado: ${formatCurrency(requestedAmount)}\n`;
+    message += `• Prazo Desejado: ${term} meses (${Math.floor(term/12)} ${Math.floor(term/12) === 1 ? 'ano' : 'anos'})\n\n`;
+    
+    message += `💰 *Melhor Oferta Encontrada:*\n`;
+    message += `• Valor do Empréstimo: ${formatCurrency(bestOffer.amount)}\n`;
+    message += `• Parcela Mensal: ${formatCurrency(bestOffer.monthlyPayment)}\n`;
+    message += `• Quantidade de Parcelas: ${bestOffer.installments}x\n`;
+    message += `• Período: ${installmentText}\n`;
+    message += `• Taxa Mensal: ${formatNumber(bestOffer.monthlyRate)}%\n`;
+    message += `• Taxa Anual: ${formatNumber(bestOffer.rate)}%\n`;
+    message += `• CET (a.a.): ${formatNumber(bestOffer.cet)}%\n`;
+    message += `• IOF: ${formatCurrency(bestOffer.iof)}\n\n`;
+    
+    message += `Gostaria de mais informações sobre esta oferta!`;
+    
+    return message;
+}
+
+/**
+ * Open WhatsApp with simulation data
+ */
+function openWhatsApp() {
+    const message = generateWhatsAppMessage();
+    
+    if (!message) {
+        alert('Não há dados de simulação para enviar.');
+        return;
+    }
+
+    // Encode the message for URL
+    const encodedMessage = encodeURIComponent(message);
+    
+    // Build WhatsApp URL
+    const whatsappUrl = `${WHATSAPP_CONFIG.BASE_URL}${WHATSAPP_CONFIG.PHONE_NUMBER}?text=${encodedMessage}`;
+    
+    // Open WhatsApp in a new window/tab
+    window.open(whatsappUrl, '_blank');
 }
 
 // ===================================
@@ -528,6 +606,9 @@ function initEventListeners() {
         elements.termSelect.classList.remove('error');
         document.getElementById('termError').textContent = '';
     });
+
+    // WhatsApp button click
+    elements.whatsappBtn.addEventListener('click', openWhatsApp);
 }
 
 // ===================================
