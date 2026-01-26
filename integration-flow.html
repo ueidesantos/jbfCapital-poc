@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fluxo de Integração com APIs - JBF Capital</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 1200px;
+            width: 100%;
+            padding: 3rem;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        h1 {
+            color: #1e293b;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .subtitle {
+            color: #64748b;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .key-message {
+            color: #667eea;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-top: 1rem;
+            padding: 1rem;
+            background: #f1f5f9;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        .flow-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .flow-step {
+            background: #f8fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 2rem;
+            position: relative;
+            transition: all 0.3s ease;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .flow-step:nth-child(1) { animation-delay: 0.1s; }
+        .flow-step:nth-child(2) { animation-delay: 0.2s; }
+        .flow-step:nth-child(3) { animation-delay: 0.3s; }
+        .flow-step:nth-child(4) { animation-delay: 0.4s; }
+        .flow-step:nth-child(5) { animation-delay: 0.5s; }
+
+        .flow-step:hover {
+            border-color: #667eea;
+            background: white;
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+        }
+
+        .step-number {
+            position: absolute;
+            top: -15px;
+            left: 2rem;
+            background: #667eea;
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+        }
+
+        .step-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .step-icon {
+            font-size: 2.5rem;
+            filter: grayscale(0.2);
+        }
+
+        .step-title {
+            color: #1e293b;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .step-description {
+            color: #475569;
+            line-height: 1.6;
+            margin-left: 3.5rem;
+        }
+
+        .arrow-down {
+            text-align: center;
+            color: #667eea;
+            font-size: 2rem;
+            margin: -0.5rem 0;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-5px);
+            }
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 2rem;
+            padding: 0.75rem 1.5rem;
+            border: 2px solid #667eea;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            background: #667eea;
+            color: white;
+            transform: translateX(-5px);
+        }
+
+        .footer {
+            margin-top: 3rem;
+            text-align: center;
+            color: #94a3b8;
+            font-size: 0.9rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 2rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .subtitle {
+                font-size: 1rem;
+            }
+
+            .key-message {
+                font-size: 1rem;
+            }
+
+            .flow-step {
+                padding: 1.5rem;
+            }
+
+            .step-title {
+                font-size: 1.2rem;
+            }
+
+            .step-description {
+                margin-left: 0;
+                margin-top: 0.5rem;
+            }
+
+            .step-icon {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .step-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔄 Fluxo de Integração com APIs</h1>
+            <p class="subtitle">Da plataforma ao resultado de negócio</p>
+            <p class="key-message">💡 Integração simples, rápida e orientada a resultados de negócio</p>
+        </div>
+
+        <div class="flow-container">
+            <!-- Step 1 -->
+            <div class="flow-step">
+                <div class="step-number">1</div>
+                <div class="step-header">
+                    <span class="step-icon" aria-label="Plataforma">💻</span>
+                    <h2 class="step-title">Plataforma Digital</h2>
+                </div>
+                <p class="step-description">
+                    Interface intuitiva onde os usuários iniciam suas solicitações de crédito e serviços financeiros. 
+                    Sistema web e mobile totalmente integrado para máxima acessibilidade.
+                </p>
+            </div>
+
+            <div class="arrow-down" aria-hidden="true">⬇️</div>
+
+            <!-- Step 2 -->
+            <div class="flow-step">
+                <div class="step-number">2</div>
+                <div class="step-header">
+                    <span class="step-icon" aria-label="Integração">🔗</span>
+                    <h2 class="step-title">Camada de Integração</h2>
+                </div>
+                <p class="step-description">
+                    Middleware robusto que gerencia autenticação, transformação de dados e roteamento inteligente. 
+                    Garante comunicação segura e eficiente entre todos os componentes do sistema.
+                </p>
+            </div>
+
+            <div class="arrow-down" aria-hidden="true">⬇️</div>
+
+            <!-- Step 3 -->
+            <div class="flow-step">
+                <div class="step-number">3</div>
+                <div class="step-header">
+                    <span class="step-icon" aria-label="APIs">🌐</span>
+                    <h2 class="step-title">APIs Externas</h2>
+                </div>
+                <p class="step-description">
+                    Conexão com parceiros estratégicos como Creditas para Home Equity e outros serviços financeiros. 
+                    Integração padronizada via REST APIs com documentação completa e suporte técnico.
+                </p>
+            </div>
+
+            <div class="arrow-down" aria-hidden="true">⬇️</div>
+
+            <!-- Step 4 -->
+            <div class="flow-step">
+                <div class="step-number">4</div>
+                <div class="step-header">
+                    <span class="step-icon" aria-label="Processamento">⚙️</span>
+                    <h2 class="step-title">Processamento</h2>
+                </div>
+                <p class="step-description">
+                    Análise inteligente de crédito, validação de documentos e cálculo de propostas personalizadas. 
+                    Motor de regras de negócio automatizado para decisões rápidas e precisas.
+                </p>
+            </div>
+
+            <div class="arrow-down" aria-hidden="true">⬇️</div>
+
+            <!-- Step 5 -->
+            <div class="flow-step">
+                <div class="step-number">5</div>
+                <div class="step-header">
+                    <span class="step-icon" aria-label="Resultado">✅</span>
+                    <h2 class="step-title">Resultado de Negócio</h2>
+                </div>
+                <p class="step-description">
+                    Entrega de propostas aprovadas, contratos digitais e acompanhamento em tempo real. 
+                    Experiência completa do cliente com notificações, dashboards e suporte dedicado.
+                </p>
+            </div>
+        </div>
+
+        <a href="index.html" class="back-link">
+            <span aria-hidden="true">←</span>
+            Voltar para a página inicial
+        </a>
+
+        <div class="footer">
+            <p>JBF Capital © 2026 - Fluxo de Integração com APIs</p>
+        </div>
+    </div>
+</body>
+</html>
