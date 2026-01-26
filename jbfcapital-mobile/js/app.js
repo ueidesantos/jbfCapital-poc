@@ -60,6 +60,8 @@ const elements = {
 // ===================================
 
 const WHATSAPP_CONFIG = {
+    // NOTE: Phone number is client-side configurable for POC purposes
+    // In production, consider moving to environment variables or server config
     PHONE_NUMBER: '5511993652951', // Format: country code + area code + number
     BASE_URL: 'https://wa.me/'
 };
@@ -67,6 +69,25 @@ const WHATSAPP_CONFIG = {
 // ===================================
 // Utility Functions
 // ===================================
+
+/**
+ * Calculate installment period text from number of installments
+ */
+function getInstallmentPeriodText(installments) {
+    const installmentYears = Math.floor(installments / 12);
+    const installmentMonths = installments % 12;
+    
+    if (installmentYears > 0) {
+        const yearsText = `${installmentYears} ${installmentYears === 1 ? 'ano' : 'anos'}`;
+        if (installmentMonths > 0) {
+            const monthsText = `${installmentMonths} ${installmentMonths === 1 ? 'mês' : 'meses'}`;
+            return `${yearsText} e ${monthsText}`;
+        }
+        return yearsText;
+    }
+    
+    return `${installmentMonths} ${installmentMonths === 1 ? 'mês' : 'meses'}`;
+}
 
 /**
  * Format number to Brazilian currency format
@@ -357,11 +378,7 @@ async function getOffers(propertyValue, requestedAmount) {
  * Create offer card HTML
  */
 function createOfferCard(offer, index, isBestOffer = false) {
-    const installmentYears = Math.floor(offer.installments / 12);
-    const installmentMonths = offer.installments % 12;
-    const installmentText = installmentYears > 0 
-        ? `${installmentYears} ${installmentYears === 1 ? 'ano' : 'anos'}${installmentMonths > 0 ? ` e ${installmentMonths} ${installmentMonths === 1 ? 'mês' : 'meses'}` : ''}`
-        : `${installmentMonths} ${installmentMonths === 1 ? 'mês' : 'meses'}`;
+    const installmentText = getInstallmentPeriodText(offer.installments);
 
     return `
         <div class="offer-card ${isBestOffer ? 'best-offer' : ''}" role="article" aria-label="Oferta ${index + 1}">
@@ -454,18 +471,15 @@ function generateWhatsAppMessage() {
     }
 
     // Calculate installment period text
-    const installmentYears = Math.floor(bestOffer.installments / 12);
-    const installmentMonths = bestOffer.installments % 12;
-    const installmentText = installmentYears > 0 
-        ? `${installmentYears} ${installmentYears === 1 ? 'ano' : 'anos'}${installmentMonths > 0 ? ` e ${installmentMonths} ${installmentMonths === 1 ? 'mês' : 'meses'}` : ''}`
-        : `${installmentMonths} ${installmentMonths === 1 ? 'mês' : 'meses'}`;
+    const installmentText = getInstallmentPeriodText(bestOffer.installments);
+    const termPeriodText = getInstallmentPeriodText(term);
 
     // Build the message
     let message = `*Simulação de Empréstimo Home Equity - JBF Capital*\n\n`;
     message += `📋 *Dados da Simulação:*\n`;
     message += `• Valor do Imóvel: ${formatCurrency(propertyValue)}\n`;
     message += `• Valor Solicitado: ${formatCurrency(requestedAmount)}\n`;
-    message += `• Prazo Desejado: ${term} meses (${Math.floor(term/12)} ${Math.floor(term/12) === 1 ? 'ano' : 'anos'})\n\n`;
+    message += `• Prazo Desejado: ${term} meses (${termPeriodText})\n\n`;
     
     message += `💰 *Melhor Oferta Encontrada:*\n`;
     message += `• Valor do Empréstimo: ${formatCurrency(bestOffer.amount)}\n`;
@@ -489,7 +503,8 @@ function openWhatsApp() {
     const message = generateWhatsAppMessage();
     
     if (!message) {
-        alert('Não há dados de simulação para enviar.');
+        // Show error using existing error section UI pattern
+        showError('Não há dados de simulação para enviar. Por favor, realize uma simulação primeiro.');
         return;
     }
 
