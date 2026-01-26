@@ -199,7 +199,8 @@ function hideError() {
 
 /**
  * Get authentication token
- * In a real scenario, this would use actual credentials
+ * NOTE: In production, credentials should be stored securely on the server-side
+ * and never exposed in client-side code. This is a POC using mock credentials.
  */
 async function getAuthToken() {
     try {
@@ -209,6 +210,8 @@ async function getAuthToken() {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
+                // SECURITY NOTE: These are MOCK credentials for POC demonstration only
+                // In production, authentication should happen server-side
                 client_id: 'poc-client-id',
                 client_secret: 'poc-client-secret',
                 grant_type: 'client_credentials'
@@ -231,10 +234,26 @@ async function getAuthToken() {
 }
 
 /**
+ * Calculate monthly payment using Price formula (Sistema de Amortização Francês - SAC)
+ * PMT = PV × [i × (1 + i)^n] / [(1 + i)^n - 1]
+ * where: PV = present value, i = monthly interest rate (decimal), n = number of periods
+ */
+function calculateMonthlyPayment(amount, monthlyRate, installments) {
+    const rate = monthlyRate / 100; // Convert percentage to decimal
+    const numerator = rate * Math.pow(1 + rate, installments);
+    const denominator = Math.pow(1 + rate, installments) - 1;
+    return amount * (numerator / denominator);
+}
+
+/**
  * Generate mock offers locally (fallback when API is unavailable)
+ * NOTE: These are mock values for POC demonstration purposes only
  */
 function generateMockOffers(propertyValue, requestedAmount) {
     console.log('Using local mock offers as fallback');
+    
+    // IOF calculation constant (0.5% for demonstration)
+    const IOF_RATE = 0.005;
     
     // Generate realistic mock offers based on requested amount
     const offers = [
@@ -245,9 +264,9 @@ function generateMockOffers(propertyValue, requestedAmount) {
             rate: 1.20,
             monthlyRate: 0.12,
             installments: 120,
-            monthlyPayment: requestedAmount * 0.014333, // Calculated based on typical amortization
+            monthlyPayment: calculateMonthlyPayment(requestedAmount, 0.12, 120),
             cet: 1.35,
-            iof: requestedAmount * 0.005,
+            iof: requestedAmount * IOF_RATE,
             validUntil: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString()
         },
         {
@@ -257,9 +276,9 @@ function generateMockOffers(propertyValue, requestedAmount) {
             rate: 1.15,
             monthlyRate: 0.115,
             installments: 96,
-            monthlyPayment: requestedAmount * 0.01581, // Calculated based on typical amortization
+            monthlyPayment: calculateMonthlyPayment(requestedAmount, 0.115, 96),
             cet: 1.28,
-            iof: requestedAmount * 0.005,
+            iof: requestedAmount * IOF_RATE,
             validUntil: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString()
         },
         {
@@ -269,9 +288,9 @@ function generateMockOffers(propertyValue, requestedAmount) {
             rate: 1.10,
             monthlyRate: 0.11,
             installments: 84,
-            monthlyPayment: requestedAmount * 0.01731, // Calculated based on typical amortization
+            monthlyPayment: calculateMonthlyPayment(requestedAmount, 0.11, 84),
             cet: 1.22,
-            iof: requestedAmount * 0.005,
+            iof: requestedAmount * IOF_RATE,
             validUntil: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString()
         }
     ];
@@ -297,6 +316,8 @@ async function getOffers(propertyValue, requestedAmount) {
             },
             body: JSON.stringify({
                 productType: 'HOME_EQUITY',
+                // PRIVACY NOTE: This is a MOCK CPF for POC demonstration only
+                // In production, user CPF should be collected securely and validated
                 cpf: '12345678900',
                 requestedAmount: requestedAmount,
                 propertyValue: propertyValue
