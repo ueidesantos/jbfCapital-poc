@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Simulação de Empréstimo Home Equity - JBF Capital">
+    <title>Home Equity - JBF Capital</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1>JBF Capital</h1>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Hero Section -->
+            <section class="hero">
+                <h2 class="hero-title">Empréstimo Home Equity</h2>
+                <p class="hero-subtitle">Use seu imóvel como garantia e conquiste as melhores taxas do mercado</p>
+            </section>
+
+            <!-- Simulation Form -->
+            <section class="simulation-section">
+                <div class="card">
+                    <h3 class="card-title">Simule seu empréstimo</h3>
+                    
+                    <form id="simulationForm" class="simulation-form" novalidate>
+                        <!-- Property Value -->
+                        <div class="form-group">
+                            <label for="propertyValue" class="form-label">
+                                Valor do imóvel
+                                <span class="required">*</span>
+                            </label>
+                            <div class="input-wrapper">
+                                <span class="input-prefix">R$</span>
+                                <input 
+                                    type="text" 
+                                    id="propertyValue" 
+                                    name="propertyValue"
+                                    class="form-input" 
+                                    placeholder="500.000"
+                                    required
+                                    aria-required="true"
+                                    aria-describedby="propertyValueHelp"
+                                >
+                            </div>
+                            <small id="propertyValueHelp" class="form-help">Digite o valor estimado do seu imóvel</small>
+                            <span class="form-error" id="propertyValueError"></span>
+                        </div>
+
+                        <!-- Requested Amount -->
+                        <div class="form-group">
+                            <label for="requestedAmount" class="form-label">
+                                Valor desejado do empréstimo
+                                <span class="required">*</span>
+                            </label>
+                            <div class="input-wrapper">
+                                <span class="input-prefix">R$</span>
+                                <input 
+                                    type="text" 
+                                    id="requestedAmount" 
+                                    name="requestedAmount"
+                                    class="form-input" 
+                                    placeholder="250.000"
+                                    required
+                                    aria-required="true"
+                                    aria-describedby="requestedAmountHelp"
+                                >
+                            </div>
+                            <small id="requestedAmountHelp" class="form-help">Até 70% do valor do imóvel</small>
+                            <span class="form-error" id="requestedAmountError"></span>
+                        </div>
+
+                        <!-- Term Selection -->
+                        <div class="form-group">
+                            <label for="term" class="form-label">
+                                Prazo desejado
+                                <span class="required">*</span>
+                            </label>
+                            <select 
+                                id="term" 
+                                name="term"
+                                class="form-select"
+                                required
+                                aria-required="true"
+                            >
+                                <option value="">Selecione o prazo</option>
+                                <option value="12">12 meses (1 ano)</option>
+                                <option value="24">24 meses (2 anos)</option>
+                                <option value="36">36 meses (3 anos)</option>
+                                <option value="48">48 meses (4 anos)</option>
+                                <option value="60">60 meses (5 anos)</option>
+                                <option value="84">84 meses (7 anos)</option>
+                                <option value="96">96 meses (8 anos)</option>
+                                <option value="120">120 meses (10 anos)</option>
+                                <option value="180">180 meses (15 anos)</option>
+                                <option value="240">240 meses (20 anos)</option>
+                            </select>
+                            <span class="form-error" id="termError"></span>
+                        </div>
+
+                        <!-- Phone Number -->
+                        <div class="form-group">
+                            <label for="phoneNumber" class="form-label">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="label-icon">
+                                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                                </svg>
+                                Celular com WhatsApp
+                                <span class="required">*</span>
+                            </label>
+                            <div class="input-wrapper">
+                                <input 
+                                    type="tel" 
+                                    id="phoneNumber" 
+                                    name="phoneNumber"
+                                    class="form-input" 
+                                    placeholder="(11) 99999-9999"
+                                    required
+                                    aria-required="true"
+                                    aria-describedby="phoneNumberHelp"
+                                    maxlength="15"
+                                >
+                            </div>
+                            <small id="phoneNumberHelp" class="form-help">Enviaremos os detalhes da simulação no seu WhatsApp</small>
+                            <span class="form-error" id="phoneNumberError"></span>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" class="btn btn-primary" id="simulateBtn">
+                            <span class="btn-text">Simular Empréstimo</span>
+                            <span class="btn-loader" style="display: none;"></span>
+                        </button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Results Section -->
+            <section class="results-section" id="resultsSection" style="display: none;">
+                <div class="card">
+                    <h3 class="card-title">Resultado da Simulação</h3>
+                    
+                    <!-- Offers Container -->
+                    <div id="offersContainer" class="offers-container">
+                        <!-- Offers will be dynamically inserted here -->
+                    </div>
+
+                    <!-- No Results Message -->
+                    <div id="noResultsMessage" class="no-results" style="display: none;">
+                        <p>Não encontramos ofertas disponíveis para os valores informados.</p>
+                        <p class="help-text">Tente ajustar os valores ou o prazo desejado.</p>
+                    </div>
+
+                    <!-- WhatsApp Contact Button -->
+                    <div id="whatsappContainer" class="whatsapp-container" style="display: none;">
+                        <button type="button" class="btn btn-whatsapp" id="whatsappBtn">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="whatsapp-icon">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                            </svg>
+                            <span>Entre em Contato</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Error Section -->
+            <section class="error-section" id="errorSection" style="display: none;">
+                <div class="card error-card">
+                    <h3 class="error-title">Ops! Algo deu errado</h3>
+                    <p id="errorMessage" class="error-message"></p>
+                    <button class="btn btn-secondary" onclick="location.reload()">Tentar Novamente</button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="footer-text">&copy; 2026 JBF Capital. Todos os direitos reservados.</p>
+            <p class="footer-disclaimer">
+                POC - Proof of Concept. Simulação de valores para fins demonstrativos.
+            </p>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
