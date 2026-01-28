@@ -14,11 +14,13 @@ pitch-deck/
 │   ├── Screenshot_2.png
 │   ├── ...
 │   └── Screenshot_9.png
+├── JBF_Capital_Pitch_Deck.pptx       # PowerPoint com os 9 slides (815 KB)
+├── generate_pptx_from_images.py      # Script para gerar PowerPoint das imagens
 ├── IDENTIDADE_VISUAL.md               # Guia completo de identidade visual
 ├── STORYTELLING.md                    # Estrutura narrativa e storytelling
 ├── CITACOES.md                        # Referências e fontes de dados
-├── generate_pitch_deck.py             # Script Python para gerar PowerPoint
-└── JBF_Capital_Pitch_Deck.pptx       # Apresentação PowerPoint original
+├── generate_pitch_deck.py             # Script Python original (backup)
+└── APRESENTACAO_NOVA.md               # Documentação da implementação
 ```
 
 ## 🎯 Objetivo
@@ -91,21 +93,26 @@ Referências completas das fontes de dados utilizadas na apresentação, incluin
 3. Pressione F11 ou use o botão de tela cheia para modo apresentação
 4. Apresente diretamente do navegador!
 
-### Opção 2: Baixar os Slides
+### Opção 2: Usar PowerPoint Gerado
+
+O arquivo `JBF_Capital_Pitch_Deck.pptx` já está pronto para uso e contém:
+- Todos os 9 slides como imagens em alta qualidade
+- Formato PowerPoint 2007+ (.pptx)
+- Compatível com PowerPoint, Keynote, Google Slides
+- Slide numbers no canto inferior direito
+
+**Para regenerar o PowerPoint:**
+```bash
+cd pitch-deck
+python3 generate_pptx_from_images.py
+```
+
+### Opção 3: Usar Imagens Individuais
 
 1. Os 9 slides estão disponíveis como imagens PNG em `imagens_exemplo/`
 2. Screenshot_1.png até Screenshot_9.png
-3. Use-os em PowerPoint, Keynote, Google Slides ou qualquer ferramenta de apresentação
+3. Use-os em qualquer ferramenta de apresentação
 4. Resolução aproximada: 1212x688 pixels
-
-### Opção 3: Gerar PowerPoint (Original)
-
-```bash
-cd pitch-deck
-python3 generate_pitch_deck.py
-```
-
-Este script gera um arquivo `JBF_Capital_Pitch_Deck.pptx` com slides de exemplo.
 
 ## 📊 Estrutura da Apresentação (9 Slides)
 
