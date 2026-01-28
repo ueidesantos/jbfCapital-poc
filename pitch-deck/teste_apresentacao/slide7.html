@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>JBF Capital - Valores e Cultura</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Open+Sans:wght@400;600&amp;display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+<style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Open Sans', sans-serif;
+            background-color: #0f172a;
+            overflow: hidden;
+        }
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            position: relative;
+            background-color: #0B1120;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        .font-heading {
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        /* Glass Cards */
+        .glass-card {
+            background-color: rgba(30, 41, 59, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            backdrop-filter: blur(4px);
+            transition: all 0.3s ease;
+        }
+        .glass-card:hover {
+            transform: translateY(-5px);
+            background-color: rgba(30, 41, 59, 0.8);
+        }
+
+        /* Value Card Specifics */
+        .value-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 24px;
+            height: 100%;
+            border-top: 4px solid transparent;
+        }
+        
+        .icon-wrapper {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin-bottom: 16px;
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Colors for each value */
+        .card-customer { border-top-color: #3B82F6; } /* Blue */
+        .card-customer .icon-wrapper { color: #3B82F6; background-color: rgba(59, 130, 246, 0.1); }
+        
+        .card-transparency { border-top-color: #06B6D4; } /* Cyan */
+        .card-transparency .icon-wrapper { color: #06B6D4; background-color: rgba(6, 182, 212, 0.1); }
+        
+        .card-innovation { border-top-color: #8B5CF6; } /* Violet */
+        .card-innovation .icon-wrapper { color: #8B5CF6; background-color: rgba(139, 92, 246, 0.1); }
+        
+        .card-excellence { border-top-color: #F59E0B; } /* Amber */
+        .card-excellence .icon-wrapper { color: #F59E0B; background-color: rgba(245, 158, 11, 0.1); }
+        
+        .card-growth { border-top-color: #10B981; } /* Emerald */
+        .card-growth .icon-wrapper { color: #10B981; background-color: rgba(16, 185, 129, 0.1); }
+
+        /* Mission Banner */
+        .mission-banner {
+            background-color: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            position: relative;
+            overflow: hidden;
+        }
+        .mission-decor {
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 6px;
+            background-color: #34D399; /* Green accent */
+        }
+    </style>
+</head>
+<body style="">
+<div class="slide-container">
+<!-- Background Elements -->
+<svg class="absolute top-0 right-0 w-full h-full pointer-events-none" style="z-index: 0;">
+<!-- Top Right Blue Glow -->
+<circle cx="1200" cy="50" fill="#3B82F6" fill-opacity="0.08" r="400"></circle>
+<!-- Bottom Left Purple Glow -->
+<circle cx="100" cy="700" fill="#8B5CF6" fill-opacity="0.08" r="400"></circle>
+<!-- Center Green Glow -->
+<circle cx="640" cy="360" fill="#10B981" fill-opacity="0.04" r="300"></circle>
+<!-- Grid Pattern -->
+<pattern height="40" id="grid" patternUnits="userSpaceOnUse" width="40" x="0" y="0">
+<path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"></path>
+</pattern>
+<rect fill="url(#grid)" height="100%" width="100%"></rect>
+</svg>
+<!-- Main Content -->
+<div class="relative z-10 flex flex-col h-full px-16 py-10">
+<!-- Header -->
+<div class="flex items-start justify-between mb-8">
+<div>
+<div class="flex items-center space-x-3 mb-2">
+<div class="h-1 w-12 bg-purple-500 rounded-full"></div>
+<p class="text-sm font-bold text-purple-400 uppercase tracking-widest font-heading">DNA Corporativo</p>
+</div>
+<h1 class="font-heading font-bold text-4xl text-white">Nossos Valores e Cultura</h1>
+</div>
+<div class="w-12 h-12 bg-purple-900 bg-opacity-20 rounded-lg flex items-center justify-center border border-purple-500 border-opacity-30">
+<i class="fas fa-heart text-2xl text-purple-400"></i>
+</div>
+</div>
+<!-- Values Grid -->
+<div class="flex-1 flex flex-col justify-center space-y-6">
+<!-- Top Row (3 items) -->
+<div class="grid grid-cols-3 gap-6">
+<!-- Value 1: Foco no Cliente -->
+<div class="glass-card value-card card-customer">
+<div class="icon-wrapper">
+<i class="fas fa-user-check"></i>
+</div>
+<h3 class="font-heading font-bold text-xl text-white mb-2">Foco no Cliente</h3>
+<p class="text-sm text-gray-400 leading-relaxed">
+                            O cliente está no centro de todas as nossas decisões estratégicas e operacionais.
+                        </p>
+</div>
+<!-- Value 2: Transparência -->
+<div class="glass-card value-card card-transparency">
+<div class="icon-wrapper">
+<i class="fas fa-eye"></i>
+</div>
+<h3 class="font-heading font-bold text-xl text-white mb-2">Transparência</h3>
+<p class="text-sm text-gray-400 leading-relaxed">
+                            Comunicação clara, honesta e sem letras miúdas em todas as relações.
+                        </p>
+</div>
+<!-- Value 3: Inovação -->
+<div class="glass-card value-card card-innovation">
+<div class="icon-wrapper">
+<i class="fas fa-rocket"></i>
+</div>
+<h3 class="font-heading font-bold text-xl text-white mb-2">Inovação</h3>
+<p class="text-sm text-gray-400 leading-relaxed">
+                            Usamos a tecnologia como diferencial competitivo para simplificar vidas.
+                        </p>
+</div>
+</div>
+<!-- Bottom Row (2 items centered) -->
+<div class="flex justify-center gap-6">
+<!-- Value 4: Excelência -->
+<div class="glass-card value-card card-excellence w-1/3" style="position: relative; transform: translate(2.60633px, -9.12217px);">
+<div class="icon-wrapper">
+<i class="fas fa-award"></i>
+</div>
+<h3 class="font-heading font-bold text-xl text-white mb-2">Excelência</h3>
+<p class="text-sm text-gray-400 leading-relaxed">
+                            Compromisso inegociável com a qualidade e precisão em cada entrega.
+                        </p>
+</div>
+<!-- Value 5: Crescimento Sustentável -->
+<div class="glass-card value-card card-growth w-1/3" style="position: relative; transform: translate(-1.30317px, -11.7285px);">
+<div class="icon-wrapper">
+<i class="fas fa-leaf"></i>
+</div>
+<h3 class="font-heading font-bold text-xl text-white mb-2">Crescimento Sustentável</h3>
+<p class="text-sm text-gray-400 leading-relaxed">
+                            Buscamos impacto positivo de longo prazo para a sociedade e investidores.
+                        </p>
+</div>
+</div>
+</div>
+<!-- Mission Banner -->
+<div class="mt-8 mb-4">
+<div class="mission-banner p-6 flex items-center justify-between" style="transform: translate(-7.81901px, -37.7919px);">
+<div class="mission-decor"></div>
+<div class="pl-6 flex-1">
+<p class="text-xs text-green-400 font-bold uppercase tracking-wider mb-2">Nossa Missão</p>
+<p class="font-heading font-bold text-2xl text-white italic">
+                            "Democratizar o acesso ao crédito através de <span class="text-blue-400">tecnologia</span>, <span class="text-green-400">transparência</span> e <span class="text-purple-400">parcerias</span> estratégicas."
+                        </p>
+</div>
+<div class="w-16 h-16 rounded-full bg-white bg-opacity-5 flex items-center justify-center text-gray-300">
+<i class="fas fa-quote-right text-3xl opacity-50"></i>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<div class="border-t border-gray-800 pt-3 flex justify-between items-center text-xs text-gray-500 mt-auto">
+<div class="flex items-center space-x-6">
+<p><i class="fas fa-users mr-1"></i> Culture Code 2026</p>
+</div>
+<div>
+<p>JBF Capital • Pitch Deck Institucional</p>
+</div>
+</div>
+</div>
+</div>
+
+</body></html>
+<!DOCTYPE html>

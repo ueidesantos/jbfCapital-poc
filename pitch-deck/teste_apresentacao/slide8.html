@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>JBF Capital - Valor Agregado e Impacto</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Open+Sans:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Open Sans', sans-serif;
+            background-color: #0f172a;
+            overflow: hidden;
+        }
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            position: relative;
+            background-color: #0B1120;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        .font-heading {
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        /* Table Styling */
+        .comparison-table {
+            width: 100%;
+            border-collapse: separate; 
+            border-spacing: 0 8px; /* Gap between rows */
+        }
+        
+        .table-row {
+            background-color: rgba(30, 41, 59, 0.4);
+            transition: all 0.2s ease;
+        }
+        
+        .table-row:hover {
+            background-color: rgba(30, 41, 59, 0.8);
+            transform: scale(1.005);
+        }
+        
+        .table-cell {
+            padding: 16px 24px;
+            vertical-align: middle;
+        }
+        
+        .table-cell:first-child {
+            border-top-left-radius: 8px;
+            border-bottom-left-radius: 8px;
+        }
+        
+        .table-cell:last-child {
+            border-top-right-radius: 8px;
+            border-bottom-right-radius: 8px;
+        }
+
+        /* JBF Column Highlight */
+        .jbf-cell {
+            background-color: rgba(59, 130, 246, 0.1);
+            border-top: 1px solid rgba(59, 130, 246, 0.3);
+            border-bottom: 1px solid rgba(59, 130, 246, 0.3);
+            position: relative;
+        }
+        .jbf-cell:first-child { border-left: 1px solid rgba(59, 130, 246, 0.3); } /* Fallback logic if needed, usually handled by wrapper */
+        
+        .benefit-badge {
+            background-color: rgba(16, 185, 129, 0.2);
+            color: #34D399;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            display: inline-block;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        /* Testimonials */
+        .testimonial-card {
+            background-color: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 20px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .quote-icon {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            font-size: 24px;
+            color: rgba(255, 255, 255, 0.1);
+        }
+
+        .avatar-circle {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            margin-right: 12px;
+        }
+    </style>
+</head>
+<body>
+<div class="slide-container">
+<!-- Background Elements -->
+<svg class="absolute top-0 right-0 w-full h-full pointer-events-none" style="z-index: 0;">
+<!-- Top Right Green Glow -->
+<circle cx="1200" cy="100" fill="#10B981" fill-opacity="0.06" r="400"></circle>
+<!-- Bottom Left Blue Glow -->
+<circle cx="100" cy="700" fill="#3B82F6" fill-opacity="0.06" r="500"></circle>
+<!-- Center Graphic -->
+<rect fill="#1E293B" height="2" opacity="0.5" width="1280" x="0" y="300"></rect>
+<!-- Grid Pattern -->
+<pattern height="40" id="grid" patternunits="userSpaceOnUse" width="40" x="0" y="0">
+<path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.02)" stroke-width="1"></path>
+</pattern>
+<rect fill="url(#grid)" height="100%" width="100%"></rect>
+</svg>
+<!-- Main Content -->
+<div class="relative z-10 flex flex-col h-full px-16 py-10">
+<!-- Header -->
+<div class="flex items-start justify-between mb-6">
+<div>
+<div class="flex items-center space-x-3 mb-2">
+<div class="h-1 w-12 bg-green-500 rounded-full"></div>
+<p class="text-sm font-bold text-green-400 uppercase tracking-widest font-heading">Valor Agregado</p>
+</div>
+<h1 class="font-heading font-bold text-4xl text-white">Impacto Real na Vida das Pessoas</h1>
+</div>
+<div class="w-12 h-12 bg-green-900 bg-opacity-20 rounded-lg flex items-center justify-center border border-green-500 border-opacity-30">
+<i class="fas fa-chart-pie text-2xl text-green-400"></i>
+</div>
+</div>
+<!-- Comparison Table Section -->
+<div class="flex-1 mb-8 overflow-hidden">
+<div class="flex justify-between px-6 mb-2 text-xs font-bold text-gray-500 uppercase tracking-wider">
+<div class="w-1/4">Aspecto</div>
+<div class="w-1/4">Tradicional</div>
+<div class="w-1/4 text-blue-400">JBF Capital</div>
+<div class="w-1/4 text-center">Benefício</div>
+</div>
+<div class="flex flex-col space-y-2">
+<!-- Row 1: Taxa de Juros -->
+<div class="flex items-center table-row rounded-lg">
+<div class="w-1/4 table-cell flex items-center text-gray-300">
+<div class="w-8 h-8 rounded bg-gray-700 bg-opacity-50 flex items-center justify-center mr-3 text-gray-400">
+<i class="fas fa-percent text-xs"></i>
+</div>
+<p class="font-semibold">Taxa de Juros</p>
+</div>
+<div class="w-1/4 table-cell text-gray-400">
+<p>2,5% a.m.</p>
+</div>
+<div class="w-1/4 table-cell jbf-cell">
+<p class="text-white font-bold text-lg">1,2% a.m.</p>
+</div>
+<div class="w-1/4 table-cell text-center">
+<span class="benefit-badge">52% menor</span>
+</div>
+</div>
+<!-- Row 2: Aprovação -->
+<div class="flex items-center table-row rounded-lg">
+<div class="w-1/4 table-cell flex items-center text-gray-300">
+<div class="w-8 h-8 rounded bg-gray-700 bg-opacity-50 flex items-center justify-center mr-3 text-gray-400">
+<i class="fas fa-clock text-xs"></i>
+</div>
+<p class="font-semibold">Tempo de Aprovação</p>
+</div>
+<div class="w-1/4 table-cell text-gray-400">
+<p>30-60 dias</p>
+</div>
+<div class="w-1/4 table-cell jbf-cell">
+<p class="text-white font-bold text-lg">48 horas</p>
+</div>
+<div class="w-1/4 table-cell text-center">
+<span class="benefit-badge">15-30x mais rápido</span>
+</div>
+</div>
+<!-- Row 3: Processo -->
+<div class="flex items-center table-row rounded-lg">
+<div class="w-1/4 table-cell flex items-center text-gray-300">
+<div class="w-8 h-8 rounded bg-gray-700 bg-opacity-50 flex items-center justify-center mr-3 text-gray-400">
+<i class="fas fa-file-signature text-xs"></i>
+</div>
+<p class="font-semibold">Processo</p>
+</div>
+<div class="w-1/4 table-cell text-gray-400">
+<p>Presencial / Papel</p>
+</div>
+<div class="w-1/4 table-cell jbf-cell">
+<p class="text-white font-bold text-lg">100% digital</p>
+</div>
+<div class="w-1/4 table-cell text-center">
+<span class="benefit-badge">Total comodidade</span>
+</div>
+</div>
+<!-- Row 4: Transparência -->
+<div class="flex items-center table-row rounded-lg">
+<div class="w-1/4 table-cell flex items-center text-gray-300">
+<div class="w-8 h-8 rounded bg-gray-700 bg-opacity-50 flex items-center justify-center mr-3 text-gray-400">
+<i class="fas fa-search text-xs"></i>
+</div>
+<p class="font-semibold">Transparência</p>
+</div>
+<div class="w-1/4 table-cell text-gray-400">
+<p>Taxas ocultas</p>
+</div>
+<div class="w-1/4 table-cell jbf-cell">
+<p class="text-white font-bold text-lg">Tudo às claras</p>
+</div>
+<div class="w-1/4 table-cell text-center">
+<span class="benefit-badge">Sem surpresas</span>
+</div>
+</div>
+<!-- Row 5: Suporte -->
+<div class="flex items-center table-row rounded-lg">
+<div class="w-1/4 table-cell flex items-center text-gray-300">
+<div class="w-8 h-8 rounded bg-gray-700 bg-opacity-50 flex items-center justify-center mr-3 text-gray-400">
+<i class="fas fa-headset text-xs"></i>
+</div>
+<p class="font-semibold">Suporte</p>
+</div>
+<div class="w-1/4 table-cell text-gray-400">
+<p>Horário Comercial</p>
+</div>
+<div class="w-1/4 table-cell jbf-cell">
+<p class="text-white font-bold text-lg">24/7</p>
+</div>
+<div class="w-1/4 table-cell text-center">
+<span class="benefit-badge">Sempre disponível</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Testimonials Section -->
+<div class="h-1/3 flex flex-col">
+<div class="flex items-center mb-4 space-x-2">
+<i class="fas fa-comment-dots text-gray-500"></i>
+<h3 class="font-heading font-bold text-lg text-white">O que dizem nossos clientes</h3>
+</div>
+<div class="grid grid-cols-3 gap-6 flex-1">
+<!-- Testimonial 1 -->
+<div class="testimonial-card">
+<i class="fas fa-quote-right quote-icon"></i>
+<p class="text-sm text-gray-300 italic mb-4 leading-relaxed">
+                            "Consegui R$ 200k em apenas 2 dias para capital de giro. Economizei R$ 40k em juros comparado ao meu banco."
+                        </p>
+<div class="flex items-center mt-auto">
+<div class="avatar-circle bg-pink-900 bg-opacity-40 text-pink-400">
+<i class="fas fa-user-tie text-sm"></i>
+</div>
+<div>
+<p class="text-sm font-bold text-white">Maria S.</p>
+<p class="text-xs text-gray-500">Empresária</p>
+</div>
+</div>
+</div>
+<!-- Testimonial 2 -->
+<div class="testimonial-card">
+<i class="fas fa-quote-right quote-icon"></i>
+<p class="text-sm text-gray-300 italic mb-4 leading-relaxed">
+                            "Fiz um Home Equity com taxa 60% menor do que a oferecida pela concorrência. Processo transparente."
+                        </p>
+<div class="flex items-center mt-auto">
+<div class="avatar-circle bg-blue-900 bg-opacity-40 text-blue-400">
+<i class="fas fa-home text-sm"></i>
+</div>
+<div>
+<p class="text-sm font-bold text-white">Carlos A.</p>
+<p class="text-xs text-gray-500">Proprietário</p>
+</div>
+</div>
+</div>
+<!-- Testimonial 3 -->
+<div class="testimonial-card">
+<i class="fas fa-quote-right quote-icon"></i>
+<p class="text-sm text-gray-300 italic mb-4 leading-relaxed">
+                            "Finalmente aprovada com uma análise justa que considerou meu histórico real, não apenas um score frio."
+                        </p>
+<div class="flex items-center mt-auto">
+<div class="avatar-circle bg-purple-900 bg-opacity-40 text-purple-400">
+<i class="fas fa-laptop text-sm"></i>
+</div>
+<div>
+<p class="text-sm font-bold text-white">Ana L.</p>
+<p class="text-xs text-gray-500">Autônoma</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<div class="border-t border-gray-800 pt-3 flex justify-between items-center text-xs text-gray-500 mt-6">
+<div class="flex items-center space-x-6">
+<p><i class="fas fa-star text-yellow-600 mr-1"></i> NPS: 89</p>
+</div>
+<div>
+<p>JBF Capital • Pitch Deck Institucional</p>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
+<!DOCTYPE html>

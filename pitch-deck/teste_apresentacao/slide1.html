@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>JBF Capital - Pitch Deck</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Open+Sans:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Open Sans', sans-serif;
+            background-color: #0f172a;
+            overflow: hidden;
+        }
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            position: relative;
+            background-color: #0B1120; /* Deep dark blue background */
+            color: white;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        .font-heading {
+            font-family: 'Montserrat', sans-serif;
+        }
+        /* Simulating gradient feel with SVG shapes instead of CSS gradients */
+        .bg-shape {
+            position: absolute;
+            border-radius: 50%;
+            z-index: 0;
+        }
+        .accent-text {
+            color: #34D399; /* Emerald 400 */
+        }
+        .glass-effect {
+            background-color: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body>
+<div class="slide-container">
+<!-- Background Elements (Simulating Gradient/Depth) -->
+<svg class="absolute top-0 right-0 w-full h-full pointer-events-none" style="z-index: 0;">
+<!-- Large Teal Glow Top Right -->
+<circle cx="1100" cy="100" fill="#059669" fill-opacity="0.15" r="500"></circle>
+<!-- Deep Blue Glow Bottom Left -->
+<circle cx="100" cy="700" fill="#1D4ED8" fill-opacity="0.1" r="600"></circle>
+<!-- Accent Circle -->
+<circle cx="1200" cy="650" fill="#34D399" fill-opacity="0.05" r="100"></circle>
+<!-- Grid Pattern Overlay -->
+<pattern height="40" id="grid" patternunits="userSpaceOnUse" width="40">
+<path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"></path>
+</pattern>
+<rect fill="url(#grid)" height="100%" width="100%"></rect>
+<!-- Geometric Lines -->
+<path d="M 0 500 Q 640 400 1280 500" fill="none" stroke="#34D399" stroke-opacity="0.2" stroke-width="2"></path>
+<path d="M 0 520 Q 640 420 1280 520" fill="none" stroke="#60A5FA" stroke-opacity="0.2" stroke-width="2"></path>
+</svg>
+<!-- Main Content Wrapper -->
+<div class="relative z-10 flex flex-col h-full px-20 py-16 justify-between">
+<!-- Header / Logo -->
+<div class="flex items-center">
+<div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center mr-4">
+<i class="fas fa-chart-line text-2xl" style="color: #0B1120;"></i>
+</div>
+<div>
+<h2 class="font-heading font-bold text-2xl tracking-widest text-white">JBF CAPITAL</h2>
+<p class="text-xs text-gray-400 tracking-wider uppercase">Fintech Solutions</p>
+</div>
+</div>
+<!-- Hero Section -->
+<div class="flex flex-col justify-center max-w-4xl mt-10">
+<div class="mb-6 inline-block">
+<span class="py-2 px-4 rounded-full border border-gray-600 bg-gray-800 bg-opacity-50 text-sm font-semibold text-green-400 tracking-wide font-heading">
+<i class="fas fa-bolt mr-2"></i> PITCH DECK INSTITUCIONAL
+                    </span>
+</div>
+<h1 class="font-heading font-extrabold text-7xl leading-tight mb-8">
+                    Democratizando o<br/>
+<span class="accent-text">Acesso ao Crédito</span>
+</h1>
+<div class="w-24 h-2 bg-gradient-to-r from-green-400 to-blue-500 rounded mb-8" style="background-color: #34D399;"></div>
+<p class="text-2xl text-gray-300 font-light leading-relaxed max-w-3xl">
+                    Conectamos pessoas a soluções financeiras inteligentes através de tecnologia de ponta e parcerias estratégicas.
+                </p>
+</div>
+<!-- Footer -->
+<div class="flex justify-between items-end border-t border-gray-700 pt-8 mt-auto">
+<div class="flex items-center space-x-8 text-sm text-gray-400">
+<div class="flex items-center">
+<i class="far fa-calendar-alt mr-2 text-blue-400"></i>
+<span>Janeiro 2026</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-code-branch mr-2 text-green-400"></i>
+<span>Versão 1.1</span>
+</div>
+</div>
+<div class="text-right">
+<p class="text-xs text-gray-500 uppercase tracking-widest mb-1">Confidencial</p>
+<p class="font-heading font-bold text-lg text-white">Series A Funding</p>
+</div>
+</div>
+</div>
+<!-- Decorative Floating UI Element (Simulating a tech dashboard card) -->
+<div class="absolute right-20 top-1/2 transform -translate-y-1/2 w-80 p-6 glass-effect rounded-xl shadow-2xl hidden lg:block" style="top: 45%;">
+<div class="flex items-center justify-between mb-4">
+<div class="text-sm text-gray-400">Crescimento Mensal</div>
+<div class="text-green-400 font-bold">+24.5%</div>
+</div>
+<div class="h-32 flex items-end justify-between space-x-2">
+<div class="w-1/5 bg-gray-700 rounded-t h-12 opacity-50"></div>
+<div class="w-1/5 bg-gray-700 rounded-t h-16 opacity-60"></div>
+<div class="w-1/5 bg-gray-700 rounded-t h-20 opacity-70"></div>
+<div class="w-1/5 bg-gray-700 rounded-t h-24 opacity-80"></div>
+<div class="w-1/5 bg-green-500 rounded-t h-28 shadow-[0_0_15px_rgba(52,211,153,0.5)]"></div>
+</div>
+<div class="mt-4 pt-4 border-t border-gray-700">
+<div class="flex items-center">
+<div class="w-8 h-8 rounded-full bg-blue-900 flex items-center justify-center text-blue-400 text-xs mr-3">
+<i class="fas fa-check"></i>
+</div>
+<div>
+<div class="text-xs text-gray-300">Aprovação Automática</div>
+<div class="text-[10px] text-gray-500">Há 2 minutos</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
