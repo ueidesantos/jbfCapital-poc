@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>JBF Capital - Mercado de Crédito</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Open+Sans:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Open Sans', sans-serif;
+            background-color: #0f172a;
+            overflow: hidden;
+        }
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            position: relative;
+            background-color: #0B1120; /* Deep dark blue */
+            color: white;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        .font-heading {
+            font-family: 'Montserrat', sans-serif;
+        }
+        /* Gradient simulation with solid colors and opacity */
+        .glass-card {
+            background-color: rgba(30, 41, 59, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .opportunity-card {
+            background-color: rgba(5, 150, 105, 0.15); /* Green tint */
+            border: 1px solid rgba(52, 211, 153, 0.3);
+            border-radius: 12px;
+        }
+        .text-accent-blue {
+            color: #60A5FA;
+        }
+        .text-accent-green {
+            color: #34D399;
+        }
+        .metric-value {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+        }
+        /* Custom scrollbar hide */
+        ::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div class="slide-container">
+<!-- Background Elements (Simulating Gradient/Depth) -->
+<svg class="absolute top-0 right-0 w-full h-full pointer-events-none" style="z-index: 0;">
+<!-- Top Right Blue Glow -->
+<circle cx="1200" cy="100" fill="#1D4ED8" fill-opacity="0.1" r="500"></circle>
+<!-- Bottom Left Green Glow -->
+<circle cx="100" cy="700" fill="#059669" fill-opacity="0.1" r="500"></circle>
+<!-- Geometric Grid -->
+<pattern height="60" id="grid" patternunits="userSpaceOnUse" width="60">
+<path d="M 60 0 L 0 0 0 60" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"></path>
+</pattern>
+<rect fill="url(#grid)" height="100%" width="100%"></rect>
+<!-- Decorative Lines -->
+<line opacity="0.2" stroke="#34D399" stroke-width="2" x1="60" x2="60" y1="140" y2="620"></line>
+</svg>
+<!-- Main Content -->
+<div class="relative z-10 flex flex-col h-full px-16 py-12">
+<!-- Header -->
+<div class="flex items-start justify-between mb-8">
+<div>
+<div class="flex items-center space-x-3 mb-2">
+<div class="h-1 w-12 bg-green-400 rounded-full"></div>
+<p class="text-sm font-bold text-green-400 uppercase tracking-widest font-heading">Visão de Mercado</p>
+</div>
+<h1 class="font-heading font-bold text-4xl text-white mb-2">O Mercado de Crédito no Brasil</h1>
+<p class="text-xl text-gray-400 font-light">Uma oportunidade gigantesca de <span class="text-white font-bold">R$ 5,4 trilhões</span></p>
+</div>
+<div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center opacity-80">
+<i class="fas fa-chart-line text-2xl text-blue-900"></i>
+</div>
+</div>
+<!-- Metrics Grid -->
+<div class="grid grid-cols-3 gap-6 mb-8 flex-1">
+<!-- Card 1: Estoque -->
+<div class="glass-card p-6 flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<div class="w-10 h-10 rounded-full bg-blue-900 bg-opacity-50 flex items-center justify-center text-blue-400">
+<i class="fas fa-database"></i>
+</div>
+<span class="text-xs text-gray-500 font-mono">2024</span>
+</div>
+<div class="mt-4">
+<p class="text-gray-400 text-sm font-semibold uppercase mb-1">Estoque de Crédito</p>
+<p class="text-4xl text-white metric-value">R$ 5,4 <span class="text-2xl text-gray-400 font-normal">Tri</span></p>
+</div>
+<div class="mt-2 h-1 w-full bg-gray-700 rounded-full overflow-hidden">
+<div class="h-full bg-blue-500 w-full"></div>
+</div>
+</div>
+<!-- Card 2: Acesso -->
+<div class="glass-card p-6 flex flex-col justify-between relative overflow-hidden">
+<div class="flex justify-between items-start relative z-10">
+<div class="w-10 h-10 rounded-full bg-red-900 bg-opacity-30 flex items-center justify-center text-red-400">
+<i class="fas fa-users-slash"></i>
+</div>
+<i class="fas fa-exclamation-triangle text-red-500 opacity-20 text-4xl absolute -top-2 -right-2"></i>
+</div>
+<div class="mt-4 relative z-10">
+<p class="text-gray-400 text-sm font-semibold uppercase mb-1">Acesso Adequado</p>
+<p class="text-4xl text-white metric-value">30%</p>
+<p class="text-xs text-red-400 mt-1">Apenas 1/3 da população</p>
+</div>
+<div class="mt-2 h-1 w-full bg-gray-700 rounded-full overflow-hidden">
+<div class="h-full bg-red-500 w-1/3"></div>
+</div>
+</div>
+<!-- Card 3: Crescimento -->
+<div class="glass-card p-6 flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<div class="w-10 h-10 rounded-full bg-green-900 bg-opacity-40 flex items-center justify-center text-green-400">
+<i class="fas fa-chart-line"></i>
+</div>
+<span class="text-xs text-green-400 bg-green-900 bg-opacity-30 px-2 py-1 rounded">+15% YoY</span>
+</div>
+<div class="mt-4">
+<p class="text-gray-400 text-sm font-semibold uppercase mb-1">Crescimento Anual</p>
+<p class="text-4xl text-white metric-value">12-15%</p>
+</div>
+<div class="mt-2 h-1 w-full bg-gray-700 rounded-full overflow-hidden">
+<div class="h-full bg-green-500 w-3/4"></div>
+</div>
+</div>
+<!-- Card 4: Home Equity -->
+<div class="glass-card p-6 flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<div class="w-10 h-10 rounded-full bg-indigo-900 bg-opacity-40 flex items-center justify-center text-indigo-400">
+<i class="fas fa-home"></i>
+</div>
+</div>
+<div class="mt-4">
+<p class="text-gray-400 text-sm font-semibold uppercase mb-1">Potencial Home Equity</p>
+<p class="text-4xl text-white metric-value">R$ 500 <span class="text-2xl text-gray-400 font-normal">Bi</span></p>
+</div>
+<div class="mt-2 h-1 w-full bg-gray-700 rounded-full overflow-hidden">
+<div class="h-full bg-indigo-500 w-1/2"></div>
+</div>
+</div>
+<!-- Card 5: Gap de Acesso -->
+<div class="glass-card p-6 flex flex-col justify-between border-red-500 border-opacity-30">
+<div class="flex justify-between items-start">
+<div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400">
+<i class="fas fa-user-lock"></i>
+</div>
+</div>
+<div class="mt-4">
+<p class="text-gray-400 text-sm font-semibold uppercase mb-1">População Excluída</p>
+<p class="text-4xl text-white metric-value">70%</p>
+<p class="text-xs text-gray-400 mt-1">Gap de oportunidade</p>
+</div>
+<div class="mt-2 h-1 w-full bg-gray-700 rounded-full overflow-hidden">
+<div class="h-full bg-gray-500 w-2/3"></div>
+</div>
+</div>
+<!-- Opportunity Highlight -->
+<div class="opportunity-card p-6 flex flex-col justify-center items-center text-center col-span-1">
+<div class="w-12 h-12 rounded-full bg-green-500 flex items-center justify-center text-white mb-3 shadow-lg shadow-green-900/50">
+<i class="fas fa-bullseye text-xl"></i>
+</div>
+<h3 class="font-heading font-bold text-lg text-white mb-2">GRANDE OPORTUNIDADE</h3>
+<p class="text-sm text-green-100 leading-relaxed">
+                        Mercado em expansão com alta demanda por <span class="font-bold text-white">soluções digitais e transparentes</span>.
+                    </p>
+</div>
+</div>
+<!-- Footer Sources -->
+<div class="border-t border-gray-800 pt-4 flex justify-between items-center text-xs text-gray-500">
+<div class="flex items-center space-x-6">
+<p><strong>Fontes:</strong></p>
+<p><i class="fas fa-university mr-1"></i> Banco Central (2024)</p>
+<p><i class="fas fa-building mr-1"></i> FEBRABAN (2024)</p>
+<p><i class="fas fa-file-alt mr-1"></i> Fitch Ratings (2024)</p>
+<p><i class="fas fa-users mr-1"></i> Instituto Locomotiva (2024)</p>
+</div>
+<div>
+<p>JBF Capital • Pitch Deck Institucional</p>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>JBF Capital - Call to Action</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Open+Sans:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Open Sans', sans-serif;
+            background-color: #0f172a;
+            overflow: hidden;
+        }
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            position: relative;
+            background-color: #0B1120;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        .font-heading {
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        /* CTA Cards */
+        .cta-card {
+            background-color: rgba(30, 41, 59, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            backdrop-filter: blur(8px);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-card:hover {
+            transform: translateY(-8px);
+            background-color: rgba(30, 41, 59, 0.7);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .cta-investor:hover {
+            border-color: rgba(16, 185, 129, 0.4); /* Green border on hover */
+            box-shadow: 0 0 30px rgba(16, 185, 129, 0.15);
+        }
+
+        .cta-partner:hover {
+            border-color: rgba(59, 130, 246, 0.4); /* Blue border on hover */
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.15);
+        }
+
+        .icon-box {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+        
+        .cta-card:hover .icon-box {
+            transform: scale(1.1);
+        }
+
+        /* Contact Pill */
+        .contact-pill {
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-pill:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Decorative Elements */
+        .glow-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: 0;
+            opacity: 0.4;
+        }
+    </style>
+</head>
+<body>
+<div class="slide-container">
+<!-- Background Elements -->
+<svg class="absolute top-0 right-0 w-full h-full pointer-events-none" style="z-index: 0;">
+<!-- Top Center Green Glow -->
+<circle cx="640" cy="0" fill="#10B981" fill-opacity="0.08" r="500"></circle>
+<!-- Bottom Left Blue Glow -->
+<circle cx="100" cy="720" fill="#3B82F6" fill-opacity="0.08" r="400"></circle>
+<!-- Bottom Right Purple Glow -->
+<circle cx="1180" cy="720" fill="#8B5CF6" fill-opacity="0.08" r="400"></circle>
+<!-- Grid Pattern -->
+<pattern height="40" id="grid" patternunits="userSpaceOnUse" width="40" x="0" y="0">
+<path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.02)" stroke-width="1"></path>
+</pattern>
+<rect fill="url(#grid)" height="100%" width="100%"></rect>
+<!-- Connecting Line Graphic -->
+<path d="M 300 360 L 980 360" stroke="rgba(255,255,255,0.05)" stroke-dasharray="8 8" stroke-width="2"></path>
+<circle cx="640" cy="360" fill="#fff" fill-opacity="0.2" r="4"></circle>
+</svg>
+<!-- Main Content -->
+<div class="relative z-10 flex flex-col h-full px-16 py-12 items-center justify-center">
+<!-- Header -->
+<div class="text-center mb-12">
+<div class="inline-flex items-center justify-center space-x-2 bg-blue-900 bg-opacity-30 border border-blue-500 border-opacity-30 rounded-full px-4 py-1 mb-4">
+<div class="w-2 h-2 rounded-full bg-blue-400"></div>
+<p class="text-xs font-bold text-blue-300 uppercase tracking-widest font-heading">Próximos Passos</p>
+</div>
+<h1 class="font-heading font-bold text-5xl text-white mb-2 tracking-tight">Vamos Construir o Futuro do Crédito Juntos</h1>
+<p class="text-xl text-gray-400 font-light">Junte-se a nós nesta jornada de democratização e inovação.</p>
+</div>
+<!-- Dual CTA Cards -->
+<div class="flex w-full max-w-5xl gap-8 mb-12">
+<!-- Card 1: Investors -->
+<div class="cta-card cta-investor flex-1 p-8 flex flex-col items-center text-center cursor-pointer group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<i class="fas fa-chart-line text-6xl text-green-400"></i>
+</div>
+<div class="icon-box bg-green-900 bg-opacity-30 text-green-400 border border-green-500 border-opacity-30">
+<i class="fas fa-hand-holding-dollar"></i>
+</div>
+<h2 class="font-heading font-bold text-2xl text-white mb-2">INVESTIDORES</h2>
+<p class="text-sm text-gray-400 uppercase tracking-wider mb-4">Oportunidade de Growth</p>
+<div class="mt-auto w-full">
+<div class="bg-green-500 bg-opacity-10 rounded-lg p-4 border border-green-500 border-opacity-20">
+<p class="text-sm text-green-300 mb-1">Rodada Série A</p>
+<p class="font-heading font-extrabold text-3xl text-white">R$ 20 MM</p>
+</div>
+</div>
+</div>
+<!-- Card 2: Partners -->
+<div class="cta-card cta-partner flex-1 p-8 flex flex-col items-center text-center cursor-pointer group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<i class="fas fa-network-wired text-6xl text-blue-400"></i>
+</div>
+<div class="icon-box bg-blue-900 bg-opacity-30 text-blue-400 border border-blue-500 border-opacity-30">
+<i class="fas fa-handshake"></i>
+</div>
+<h2 class="font-heading font-bold text-2xl text-white mb-2">PARCEIROS</h2>
+<p class="text-sm text-gray-400 uppercase tracking-wider mb-4">Expansão de Ecossistema</p>
+<div class="mt-auto w-full">
+<div class="bg-blue-500 bg-opacity-10 rounded-lg p-4 border border-blue-500 border-opacity-20">
+<p class="text-sm text-blue-300 mb-1">Time-to-Market</p>
+<p class="font-heading font-extrabold text-3xl text-white">Integração 30 dias</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Contact Section -->
+<div class="flex flex-col items-center">
+<a class="contact-pill px-8 py-4 flex items-center space-x-4 mb-6 group no-underline" href="mailto:contato@jbfcapital.com.br">
+<div class="w-10 h-10 rounded-full bg-white bg-opacity-10 flex items-center justify-center text-white group-hover:bg-opacity-20 transition-colors">
+<i class="fas fa-envelope"></i>
+</div>
+<div>
+<p class="text-xs text-gray-400 uppercase tracking-wide mb-0.5">Fale Conosco</p>
+<p class="font-heading font-bold text-xl text-white group-hover:text-blue-300 transition-colors">contato@jbfcapital.com.br</p>
+</div>
+<div class="pl-4 border-l border-gray-600">
+<i class="fas fa-arrow-right text-gray-400 group-hover:translate-x-1 transition-transform"></i>
+</div>
+</a>
+<p class="text-gray-400 font-light text-sm italic">
+                    "Obrigado pela atenção. Estamos prontos para responder suas perguntas."
+                </p>
+</div>
+<!-- Footer -->
+<div class="absolute bottom-6 w-full px-16 flex justify-between items-center text-xs text-gray-600">
+<p>© 2026 JBF Capital. Todos os direitos reservados.</p>
+<div class="flex space-x-4">
+<p>São Paulo, SP</p>
+<p>•</p>
+<p>www.jbfcapital.com.br</p>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
+<!DOCTYPE html>

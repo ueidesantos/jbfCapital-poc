@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>JBF Capital - Arquitetura de Integração</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Open+Sans:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Open Sans', sans-serif;
+            background-color: #0f172a;
+            overflow: hidden;
+        }
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            position: relative;
+            background-color: #0B1120;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        .font-heading {
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        /* Glass Cards */
+        .glass-card {
+            background-color: rgba(30, 41, 59, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            backdrop-filter: blur(4px);
+        }
+        
+        /* Flow Step Styling */
+        .flow-step {
+            position: relative;
+            display: flex;
+            align-items: center;
+            margin-bottom: 24px;
+            z-index: 10;
+        }
+        .flow-step:last-child {
+            margin-bottom: 0;
+        }
+        
+        .step-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #1E293B;
+            border: 2px solid #3B82F6;
+            color: #3B82F6;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            z-index: 20;
+            flex-shrink: 0;
+            margin-right: 16px;
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.2);
+        }
+        
+        .step-content {
+            flex: 1;
+            background-color: rgba(30, 41, 59, 0.4);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            padding: 12px 16px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+        }
+        
+        /* Connector Line */
+        .flow-line {
+            position: absolute;
+            top: 20px;
+            bottom: -30px;
+            left: 20px;
+            width: 2px;
+            background-color: rgba(59, 130, 246, 0.3);
+            z-index: 0;
+        }
+        .flow-step:last-child .flow-line {
+            display: none;
+        }
+
+        /* Benefit Cards */
+        .benefit-card {
+            background-color: rgba(15, 23, 42, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 16px;
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .benefit-card:hover {
+            border-color: rgba(52, 211, 153, 0.3);
+            background-color: rgba(15, 23, 42, 0.8);
+        }
+
+        .highlight-text {
+            color: #34D399;
+        }
+    </style>
+</head>
+<body>
+<div class="slide-container">
+<!-- Background Elements -->
+<svg class="absolute top-0 right-0 w-full h-full pointer-events-none" style="z-index: 0;">
+<!-- Top Right Green Glow -->
+<circle cx="1200" cy="100" fill="#059669" fill-opacity="0.08" r="400"></circle>
+<!-- Bottom Left Blue Glow -->
+<circle cx="100" cy="700" fill="#1D4ED8" fill-opacity="0.08" r="500"></circle>
+<!-- Center Graphic -->
+<circle cx="400" cy="360" fill="#3B82F6" fill-opacity="0.03" r="250"></circle>
+<!-- Grid Pattern -->
+<pattern height="40" id="grid" patternunits="userSpaceOnUse" width="40">
+<path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"></path>
+</pattern>
+<rect fill="url(#grid)" height="100%" width="100%"></rect>
+</svg>
+<!-- Main Content -->
+<div class="relative z-10 flex flex-col h-full px-16 py-10">
+<!-- Header -->
+<div class="flex items-start justify-between mb-8">
+<div>
+<div class="flex items-center space-x-3 mb-2">
+<div class="h-1 w-12 bg-blue-500 rounded-full"></div>
+<p class="text-sm font-bold text-blue-400 uppercase tracking-widest font-heading">API &amp; Conectividade</p>
+</div>
+<h1 class="font-heading font-bold text-4xl text-white">Arquitetura de Integração</h1>
+<p class="text-lg text-gray-400 font-light mt-1">API RESTful • <span class="text-green-400 font-semibold">Integração em 30 dias</span></p>
+</div>
+<div class="w-12 h-12 bg-blue-900 bg-opacity-20 rounded-lg flex items-center justify-center border border-blue-500 border-opacity-30">
+<i class="fas fa-plug text-2xl text-blue-400"></i>
+</div>
+</div>
+<!-- Split Content -->
+<div class="flex flex-1 gap-12">
+<!-- Left Column: Vertical Integration Flow -->
+<div class="w-5/12 flex flex-col justify-center">
+<div class="glass-card p-6 relative">
+<h3 class="font-heading font-bold text-lg text-white mb-6 pl-2 border-l-4 border-blue-500">Fluxo de Dados</h3>
+<!-- Step 1 -->
+<div class="flow-step">
+<div class="flow-line"></div>
+<div class="step-number">1</div>
+<div class="step-content">
+<div class="mr-4 text-blue-400"><i class="fas fa-user"></i></div>
+<div>
+<p class="text-sm font-bold text-white">Solicitação do Cliente</p>
+<p class="text-xs text-gray-400">Início da jornada via frontend</p>
+</div>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="flow-step">
+<div class="flow-line"></div>
+<div class="step-number">2</div>
+<div class="step-content">
+<div class="mr-4 text-indigo-400"><i class="fas fa-shield-alt"></i></div>
+<div>
+<p class="text-sm font-bold text-white">Validação JBF</p>
+<p class="text-xs text-gray-400">Verificação de segurança e roteamento</p>
+</div>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="flow-step">
+<div class="flow-line"></div>
+<div class="step-number">3</div>
+<div class="step-content bg-blue-900 bg-opacity-30 border-blue-500 border-opacity-40">
+<div class="mr-4 text-green-400"><i class="fas fa-exchange-alt"></i></div>
+<div>
+<p class="text-sm font-bold text-white">Integração Parceiros</p>
+<p class="text-xs text-gray-400">Comunicação via API RESTful</p>
+</div>
+</div>
+</div>
+<!-- Step 4 -->
+<div class="flow-step">
+<div class="flow-line"></div>
+<div class="step-number">4</div>
+<div class="step-content">
+<div class="mr-4 text-purple-400"><i class="fas fa-brain"></i></div>
+<div>
+<p class="text-sm font-bold text-white">Scoring Inteligente</p>
+<p class="text-xs text-gray-400">Matching de perfil e produto</p>
+</div>
+</div>
+</div>
+<!-- Step 5 -->
+<div class="flow-step">
+<div class="step-number">5</div>
+<div class="step-content">
+<div class="mr-4 text-teal-400"><i class="fas fa-file-invoice-dollar"></i></div>
+<div>
+<p class="text-sm font-bold text-white">Entrega da Proposta</p>
+<p class="text-xs text-gray-400">Retorno da oferta aprovada</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Benefits Grid -->
+<div class="w-7/12 flex flex-col">
+<div class="mb-4">
+<h3 class="font-heading font-bold text-xl text-white">Benefícios para Parceiros</h3>
+<p class="text-sm text-gray-400">Por que integrar com a JBF Capital?</p>
+</div>
+<div class="grid grid-cols-2 gap-4 flex-1">
+<!-- Benefit 1 -->
+<div class="benefit-card">
+<div class="flex items-center mb-2">
+<div class="w-8 h-8 rounded bg-green-900 bg-opacity-40 flex items-center justify-center text-green-400 mr-3">
+<i class="fas fa-stopwatch"></i>
+</div>
+<p class="font-bold text-white text-sm">Velocidade</p>
+</div>
+<p class="text-sm text-gray-300">Integração em <span class="highlight-text font-bold">30 dias</span> vs média de 6 meses do mercado.</p>
+</div>
+<!-- Benefit 2 -->
+<div class="benefit-card">
+<div class="flex items-center mb-2">
+<div class="w-8 h-8 rounded bg-blue-900 bg-opacity-40 flex items-center justify-center text-blue-400 mr-3">
+<i class="fas fa-plug"></i>
+</div>
+<p class="font-bold text-white text-sm">Plug-and-play</p>
+</div>
+<p class="text-sm text-gray-300">SDKs prontos e documentação clara para início imediato.</p>
+</div>
+<!-- Benefit 3 -->
+<div class="benefit-card">
+<div class="flex items-center mb-2">
+<div class="w-8 h-8 rounded bg-indigo-900 bg-opacity-40 flex items-center justify-center text-indigo-400 mr-3">
+<i class="fas fa-code"></i>
+</div>
+<p class="font-bold text-white text-sm">Padrão Moderno</p>
+</div>
+<p class="text-sm text-gray-300">API RESTful + especificação OpenAPI (Swagger).</p>
+</div>
+<!-- Benefit 4 -->
+<div class="benefit-card">
+<div class="flex items-center mb-2">
+<div class="w-8 h-8 rounded bg-purple-900 bg-opacity-40 flex items-center justify-center text-purple-400 mr-3">
+<i class="fas fa-satellite-dish"></i>
+</div>
+<p class="font-bold text-white text-sm">Real-time</p>
+</div>
+<p class="text-sm text-gray-300">Webhooks para notificações de status em tempo real.</p>
+</div>
+<!-- Benefit 5 -->
+<div class="benefit-card">
+<div class="flex items-center mb-2">
+<div class="w-8 h-8 rounded bg-yellow-900 bg-opacity-40 flex items-center justify-center text-yellow-400 mr-3">
+<i class="fas fa-vial"></i>
+</div>
+<p class="font-bold text-white text-sm">Sandbox</p>
+</div>
+<p class="text-sm text-gray-300">Ambiente seguro de testes com dados sintéticos.</p>
+</div>
+<!-- Benefit 6 -->
+<div class="benefit-card">
+<div class="flex items-center mb-2">
+<div class="w-8 h-8 rounded bg-teal-900 bg-opacity-40 flex items-center justify-center text-teal-400 mr-3">
+<i class="fas fa-chart-line"></i>
+</div>
+<p class="font-bold text-white text-sm">Dashboard</p>
+</div>
+<p class="text-sm text-gray-300">Painel completo para monitoramento de requisições e erros.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<div class="border-t border-gray-800 pt-3 flex justify-between items-center text-xs text-gray-500 mt-auto">
+<div class="flex items-center space-x-6">
+<p><i class="fas fa-book mr-1"></i> Documentation v2.0</p>
+</div>
+<div>
+<p>JBF Capital • Pitch Deck Institucional</p>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
+<!DOCTYPE html>

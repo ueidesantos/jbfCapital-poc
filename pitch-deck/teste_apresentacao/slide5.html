@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>JBF Capital - Arquitetura Técnica</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Open+Sans:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Open Sans', sans-serif;
+            background-color: #0f172a;
+            overflow: hidden;
+        }
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            position: relative;
+            background-color: #0B1120;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        .font-heading {
+            font-family: 'Montserrat', sans-serif;
+        }
+        /* Glass effect for layers */
+        .tech-layer {
+            background-color: rgba(30, 41, 59, 0.6);
+            border-left: 4px solid;
+            border-radius: 8px;
+            backdrop-filter: blur(4px);
+            transition: all 0.3s ease;
+            position: relative;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+        }
+        .tech-layer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            pointer-events: none;
+        }
+        /* Layer specific colors */
+        .layer-presentation { border-color: #60A5FA; } /* Blue */
+        .layer-gateway { border-color: #818CF8; } /* Indigo */
+        .layer-services { border-color: #A78BFA; } /* Purple */
+        .layer-data { border-color: #34D399; } /* Green */
+        .layer-infra { border-color: #94A3B8; } /* Slate */
+
+        .tech-pill {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            padding: 4px 8px;
+            font-size: 0.75rem;
+            color: #E2E8F0;
+            margin-right: 8px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+        }
+        
+        /* Sidebar Highlight Cards */
+        .highlight-card {
+            background-color: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .connector-line {
+            width: 2px;
+            height: 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+<div class="slide-container">
+<!-- Background Elements -->
+<svg class="absolute top-0 right-0 w-full h-full pointer-events-none" style="z-index: 0;">
+<!-- Top Right Blue Glow -->
+<circle cx="1200" cy="100" fill="#1D4ED8" fill-opacity="0.08" r="500"></circle>
+<!-- Bottom Left Green Glow -->
+<circle cx="100" cy="700" fill="#059669" fill-opacity="0.08" r="500"></circle>
+<!-- Center Subtle Glow -->
+<circle cx="640" cy="360" fill="#6366F1" fill-opacity="0.05" r="300"></circle>
+<!-- Grid Pattern -->
+<pattern height="40" id="grid" patternunits="userSpaceOnUse" width="40">
+<path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"></path>
+</pattern>
+<rect fill="url(#grid)" height="100%" width="100%"></rect>
+</svg>
+<!-- Main Content -->
+<div class="relative z-10 flex flex-col h-full px-16 py-10">
+<!-- Header -->
+<div class="flex items-start justify-between mb-6">
+<div>
+<div class="flex items-center space-x-3 mb-2">
+<div class="h-1 w-12 bg-indigo-500 rounded-full"></div>
+<p class="text-sm font-bold text-indigo-400 uppercase tracking-widest font-heading">Infraestrutura</p>
+</div>
+<h1 class="font-heading font-bold text-4xl text-white">Arquitetura Técnica</h1>
+<p class="text-lg text-gray-400 font-light mt-1">Escalável, Segura e Cloud-Native</p>
+</div>
+<div class="w-12 h-12 bg-indigo-900 bg-opacity-20 rounded-lg flex items-center justify-center border border-indigo-500 border-opacity-30">
+<i class="fas fa-server text-2xl text-indigo-400"></i>
+</div>
+</div>
+<div class="flex flex-1 gap-12">
+<!-- Left Column: Layered Diagram -->
+<div class="flex-1 flex flex-col justify-center py-2">
+<!-- Layer 1: Presentation -->
+<div class="tech-layer layer-presentation h-20 mb-1">
+<div class="w-12 h-12 rounded-full bg-blue-900 bg-opacity-50 flex items-center justify-center mr-6 text-blue-400 shrink-0">
+<i class="fas fa-desktop"></i>
+</div>
+<div class="flex-1">
+<p class="text-xs text-blue-400 uppercase tracking-wider font-bold mb-1">Camada 1: Apresentação</p>
+<div class="flex items-center">
+<span class="tech-pill">Web App (React)</span>
+<span class="tech-pill">Mobile (React Native)</span>
+<span class="tech-pill">Portal Parceiros</span>
+</div>
+</div>
+</div>
+<!-- Connector -->
+<div class="connector-line"></div>
+<!-- Layer 2: API Gateway -->
+<div class="tech-layer layer-gateway h-20 mb-1">
+<div class="w-12 h-12 rounded-full bg-indigo-900 bg-opacity-50 flex items-center justify-center mr-6 text-indigo-400 shrink-0">
+<i class="fas fa-network-wired"></i>
+</div>
+<div class="flex-1">
+<p class="text-xs text-indigo-400 uppercase tracking-wider font-bold mb-1">Camada 2: API Gateway</p>
+<div class="flex items-center">
+<span class="tech-pill">OAuth 2.0</span>
+<span class="tech-pill">Rate Limiting</span>
+<span class="tech-pill">Load Balancer</span>
+</div>
+</div>
+</div>
+<!-- Connector -->
+<div class="connector-line"></div>
+<!-- Layer 3: Microservices -->
+<div class="tech-layer layer-services h-20 mb-1">
+<div class="w-12 h-12 rounded-full bg-purple-900 bg-opacity-50 flex items-center justify-center mr-6 text-purple-400 shrink-0">
+<i class="fas fa-cogs"></i>
+</div>
+<div class="flex-1">
+<p class="text-xs text-purple-400 uppercase tracking-wider font-bold mb-1">Camada 3: Microserviços</p>
+<div class="flex items-center">
+<span class="tech-pill">Usuários</span>
+<span class="tech-pill">Crédito</span>
+<span class="tech-pill">Integração</span>
+<span class="tech-pill">Notificações</span>
+</div>
+</div>
+</div>
+<!-- Connector -->
+<div class="connector-line"></div>
+<!-- Layer 4: Data -->
+<div class="tech-layer layer-data h-20 mb-1">
+<div class="w-12 h-12 rounded-full bg-green-900 bg-opacity-50 flex items-center justify-center mr-6 text-green-400 shrink-0">
+<i class="fas fa-database"></i>
+</div>
+<div class="flex-1">
+<p class="text-xs text-green-400 uppercase tracking-wider font-bold mb-1">Camada 4: Dados</p>
+<div class="flex items-center">
+<span class="tech-pill">PostgreSQL</span>
+<span class="tech-pill">MongoDB</span>
+<span class="tech-pill">Redis</span>
+<span class="tech-pill">ElasticSearch</span>
+</div>
+</div>
+</div>
+<!-- Connector -->
+<div class="connector-line"></div>
+<!-- Layer 5: Infrastructure -->
+<div class="tech-layer layer-infra h-20">
+<div class="w-12 h-12 rounded-full bg-gray-700 bg-opacity-50 flex items-center justify-center mr-6 text-gray-400 shrink-0">
+<i class="fas fa-server"></i>
+</div>
+<div class="flex-1">
+<p class="text-xs text-gray-400 uppercase tracking-wider font-bold mb-1">Camada 5: Infraestrutura</p>
+<div class="flex items-center">
+<span class="tech-pill">AWS Cloud</span>
+<span class="tech-pill">Docker/K8s</span>
+<span class="tech-pill">CI/CD</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Sidebar Highlights -->
+<div class="w-1/3 flex flex-col justify-center space-y-4">
+<div class="mb-2">
+<h3 class="font-heading font-bold text-xl text-white">Destaques Técnicos</h3>
+<p class="text-sm text-gray-400">Métricas de performance e segurança</p>
+</div>
+<!-- Highlight 1 -->
+<div class="highlight-card p-4">
+<div class="w-10 h-10 rounded-full bg-green-500 bg-opacity-20 flex items-center justify-center text-green-400 mr-4">
+<i class="fas fa-check-circle"></i>
+</div>
+<div>
+<p class="font-bold text-white text-lg">99.9%</p>
+<p class="text-xs text-gray-400 uppercase">Uptime Garantido</p>
+</div>
+</div>
+<!-- Highlight 2 -->
+<div class="highlight-card p-4">
+<div class="w-10 h-10 rounded-full bg-yellow-500 bg-opacity-20 flex items-center justify-center text-yellow-400 mr-4">
+<i class="fas fa-bolt"></i>
+</div>
+<div>
+<p class="font-bold text-white text-lg">&lt; 200ms</p>
+<p class="text-xs text-gray-400 uppercase">Latência Média</p>
+</div>
+</div>
+<!-- Highlight 3 -->
+<div class="highlight-card p-4">
+<div class="w-10 h-10 rounded-full bg-blue-500 bg-opacity-20 flex items-center justify-center text-blue-400 mr-4">
+<i class="fas fa-expand-arrows-alt"></i>
+</div>
+<div>
+<p class="font-bold text-white text-lg">Horizontal</p>
+<p class="text-xs text-gray-400 uppercase">Escalabilidade</p>
+</div>
+</div>
+<!-- Highlight 4 -->
+<div class="highlight-card p-4">
+<div class="w-10 h-10 rounded-full bg-teal-500 bg-opacity-20 flex items-center justify-center text-teal-400 mr-4">
+<i class="fas fa-save"></i>
+</div>
+<div>
+<p class="font-bold text-white text-lg">3x / Dia</p>
+<p class="text-xs text-gray-400 uppercase">Rotina de Backup</p>
+</div>
+</div>
+<!-- Highlight 5 -->
+<div class="highlight-card p-4 border-green-500 border-opacity-30">
+<div class="w-10 h-10 rounded-full bg-green-900 bg-opacity-40 flex items-center justify-center text-green-400 mr-4">
+<i class="fas fa-shield-alt"></i>
+</div>
+<div>
+<p class="font-bold text-white text-sm">PCI-DSS &amp; ISO 27001</p>
+<p class="text-xs text-gray-400 uppercase">Compliance e Segurança</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<div class="border-t border-gray-800 pt-3 flex justify-between items-center text-xs text-gray-500 mt-auto">
+<div class="flex items-center space-x-6">
+<p><i class="fab fa-aws mr-1"></i> Powered by AWS</p>
+</div>
+<div>
+<p>JBF Capital • Pitch Deck Institucional</p>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
+<!DOCTYPE html>

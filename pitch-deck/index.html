@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JBF Capital - Pitch Deck</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header {
+            background: white;
+            padding: 3rem 2rem;
+            border-radius: 16px;
+            margin-bottom: 3rem;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            color: #64748b;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 3rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(102, 126, 234, 0.5);
+        }
+
+        .section-title {
+            color: white;
+            font-size: 2rem;
+            text-align: center;
+            margin: 3rem 0 2rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .slides-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .slide-preview {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .slide-preview:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .slide-preview img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .slide-number {
+            padding: 1rem;
+            text-align: center;
+            font-weight: 600;
+            color: #475569;
+            background: #f8fafc;
+        }
+
+        .info-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .info-section h2 {
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+
+        .info-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .info-section li {
+            padding: 0.5rem 0;
+            color: #475569;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .info-section li:before {
+            content: "✓";
+            color: #10B981;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .download-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .download-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: #10B981;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            margin: 0.5rem;
+            transition: all 0.3s;
+        }
+
+        .download-button:hover {
+            background: #059669;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .slides-gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>JBF Capital</h1>
+            <p>Pitch Deck Institucional - Apresentação Profissional</p>
+            <a href="presentation.html" class="cta-button">▶ Ver Apresentação Completa</a>
+        </div>
+
+        <div class="info-section">
+            <h2>📊 Sobre Esta Apresentação</h2>
+            <ul>
+                <li>9 slides profissionais criados a partir dos arquivos HTML em teste_apresentacao/</li>
+                <li>Design moderno com tema escuro (#0B1120) e elementos visuais sofisticados</li>
+                <li>Resolução 1280x720 (16:9) perfeita para apresentações</li>
+                <li>Navegação por teclado, mouse e touch</li>
+                <li>Formato PowerPoint disponível para download</li>
+            </ul>
+        </div>
+
+        <h2 class="section-title">Galeria de Slides</h2>
+
+        <div class="slides-gallery">
+            <div class="slide-preview">
+                <img src="slides_from_html/Slide_1.png" alt="Slide 1 - Capa">
+                <div class="slide-number">Slide 1 - Democratizando o Acesso ao Crédito</div>
+            </div>
+
+            <div class="slide-preview">
+                <img src="slides_from_html/Slide_2.png" alt="Slide 2 - Mercado">
+                <div class="slide-number">Slide 2 - O Mercado de Crédito no Brasil</div>
+            </div>
+
+            <div class="slide-preview">
+                <img src="slides_from_html/Slide_3.png" alt="Slide 3 - Desafios">
+                <div class="slide-number">Slide 3 - Os Desafios do Acesso ao Crédito</div>
+            </div>
+
+            <div class="slide-preview">
+                <img src="slides_from_html/Slide_4.png" alt="Slide 4 - Solução">
+                <div class="slide-number">Slide 4 - Nossa Solução</div>
+            </div>
+
+            <div class="slide-preview">
+                <img src="slides_from_html/Slide_5.png" alt="Slide 5 - Arquitetura">
+                <div class="slide-number">Slide 5 - Arquitetura Técnica</div>
+            </div>
+
+            <div class="slide-preview">
+                <img src="slides_from_html/Slide_6.png" alt="Slide 6 - Modelo">
+                <div class="slide-number">Slide 6 - Modelo de Negócio</div>
+            </div>
+
+            <div class="slide-preview">
+                <img src="slides_from_html/Slide_7.png" alt="Slide 7 - Tração">
+                <div class="slide-number">Slide 7 - Tração e Resultados</div>
+            </div>
+
+            <div class="slide-preview">
+                <img src="slides_from_html/Slide_8.png" alt="Slide 8 - Equipe">
+                <div class="slide-number">Slide 8 - Equipe</div>
+            </div>
+
+            <div class="slide-preview">
+                <img src="slides_from_html/Slide_9.png" alt="Slide 9 - Call to Action">
+                <div class="slide-number">Slide 9 - Próximos Passos</div>
+            </div>
+        </div>
+
+        <div class="download-section">
+            <h2 style="color: #667eea; margin-bottom: 1rem;">📥 Downloads</h2>
+            <p style="color: #64748b; margin-bottom: 1.5rem;">
+                Baixe a apresentação no formato de sua preferência
+            </p>
+            <a href="JBF_Capital_Pitch_Deck.pptx" class="download-button" download>
+                📊 PowerPoint (.pptx) - 1010 KB
+            </a>
+            <a href="presentation.html" class="download-button">
+                🌐 Visualizador HTML Interativo
+            </a>
+        </div>
+    </div>
+</body>
+</html>

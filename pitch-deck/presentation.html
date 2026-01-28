@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JBF Capital - Apresentação Institucional</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #0f172a;
+            color: white;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .presentation-container {
+            width: 100%;
+            max-width: 1400px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .slide-viewer {
+            width: 100%;
+            max-width: 1280px;
+            background: #1a1a1a;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .slide-image-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            background: #0B1120;
+        }
+
+        .slide-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .slide-image.active {
+            opacity: 1;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 30px;
+            background: rgba(15, 23, 42, 0.95);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            border-radius: 6px;
+            color: white;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-icon {
+            font-size: 16px;
+        }
+
+        .slide-counter {
+            font-size: 16px;
+            font-weight: 600;
+            color: #94a3b8;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .slide-counter .current {
+            color: white;
+            font-size: 24px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .fullscreen-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .fullscreen-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: none;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 32px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #94a3b8;
+            font-size: 16px;
+        }
+
+        /* Keyboard hint */
+        .keyboard-hint {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            font-size: 13px;
+            color: #94a3b8;
+            text-align: center;
+        }
+
+        .keyboard-hint kbd {
+            padding: 3px 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 12px;
+            color: white;
+            margin: 0 3px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .presentation-container {
+                padding: 10px;
+            }
+
+            .controls {
+                flex-direction: column;
+                gap: 15px;
+                padding: 15px;
+            }
+
+            .nav-buttons {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .btn {
+                flex: 1;
+                justify-content: center;
+            }
+
+            .keyboard-hint {
+                font-size: 11px;
+            }
+        }
+
+        /* Fullscreen mode */
+        .presentation-container:fullscreen {
+            max-width: none;
+            padding: 0;
+        }
+
+        .presentation-container:fullscreen .header,
+        .presentation-container:fullscreen .keyboard-hint {
+            display: none;
+        }
+
+        .presentation-container:fullscreen .slide-viewer {
+            max-width: none;
+            height: 100vh;
+            border-radius: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation-container">
+        <div class="header">
+            <h1>JBF Capital - Pitch Deck Institucional</h1>
+            <p>Apresentação baseada nos slides HTML do diretório teste_apresentacao</p>
+        </div>
+
+        <div class="slide-viewer">
+            <div class="slide-image-container">
+                <img src="slides_from_html/Slide_1.png" alt="Slide 1" class="slide-image active" data-slide="1">
+                <img src="slides_from_html/Slide_2.png" alt="Slide 2" class="slide-image" data-slide="2">
+                <img src="slides_from_html/Slide_3.png" alt="Slide 3" class="slide-image" data-slide="3">
+                <img src="slides_from_html/Slide_4.png" alt="Slide 4" class="slide-image" data-slide="4">
+                <img src="slides_from_html/Slide_5.png" alt="Slide 5" class="slide-image" data-slide="5">
+                <img src="slides_from_html/Slide_6.png" alt="Slide 6" class="slide-image" data-slide="6">
+                <img src="slides_from_html/Slide_7.png" alt="Slide 7" class="slide-image" data-slide="7">
+                <img src="slides_from_html/Slide_8.png" alt="Slide 8" class="slide-image" data-slide="8">
+                <img src="slides_from_html/Slide_9.png" alt="Slide 9" class="slide-image" data-slide="9">
+            </div>
+
+            <div class="controls">
+                <div class="nav-buttons">
+                    <button class="btn" onclick="previousSlide()">
+                        <span class="btn-icon">←</span>
+                        Anterior
+                    </button>
+                    <button class="btn" onclick="nextSlide()">
+                        Próximo
+                        <span class="btn-icon">→</span>
+                    </button>
+                </div>
+
+                <div class="slide-counter">
+                    <span class="current" id="currentSlide">1</span>
+                    <span>/</span>
+                    <span id="totalSlides">9</span>
+                </div>
+
+                <button class="btn fullscreen-btn" onclick="toggleFullscreen()">
+                    <span class="btn-icon">⛶</span>
+                    Tela Cheia
+                </button>
+            </div>
+        </div>
+
+        <div class="keyboard-hint">
+            <strong>Atalhos:</strong>
+            <kbd>←</kbd> <kbd>→</kbd> Navegar |
+            <kbd>Space</kbd> Próximo |
+            <kbd>Home</kbd> Primeiro |
+            <kbd>End</kbd> Último |
+            <kbd>F11</kbd> Tela cheia
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 1;
+        const totalSlides = 9;
+
+        function updateSlideDisplay() {
+            // Hide all slides
+            document.querySelectorAll('.slide-image').forEach(img => {
+                img.classList.remove('active');
+            });
+
+            // Show current slide
+            const activeSlide = document.querySelector(`.slide-image[data-slide="${currentSlide}"]`);
+            if (activeSlide) {
+                activeSlide.classList.add('active');
+            }
+
+            // Update counter
+            document.getElementById('currentSlide').textContent = currentSlide;
+
+            // Update button states
+            document.querySelector('.btn:first-child').disabled = currentSlide === 1;
+            document.querySelectorAll('.btn')[1].disabled = currentSlide === totalSlides;
+        }
+
+        function nextSlide() {
+            if (currentSlide < totalSlides) {
+                currentSlide++;
+                updateSlideDisplay();
+            }
+        }
+
+        function previousSlide() {
+            if (currentSlide > 1) {
+                currentSlide--;
+                updateSlideDisplay();
+            }
+        }
+
+        function goToSlide(slideNumber) {
+            if (slideNumber >= 1 && slideNumber <= totalSlides) {
+                currentSlide = slideNumber;
+                updateSlideDisplay();
+            }
+        }
+
+        function toggleFullscreen() {
+            const container = document.querySelector('.presentation-container');
+            if (!document.fullscreenElement) {
+                container.requestFullscreen().catch(err => {
+                    console.log('Erro ao entrar em tela cheia:', err);
+                });
+            } else {
+                document.exitFullscreen();
+            }
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            switch(e.key) {
+                case 'ArrowRight':
+                case ' ':
+                    e.preventDefault();
+                    nextSlide();
+                    break;
+                case 'ArrowLeft':
+                    e.preventDefault();
+                    previousSlide();
+                    break;
+                case 'Home':
+                    e.preventDefault();
+                    goToSlide(1);
+                    break;
+                case 'End':
+                    e.preventDefault();
+                    goToSlide(totalSlides);
+                    break;
+            }
+        });
+
+        // Touch/swipe support
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.querySelector('.slide-viewer').addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        document.querySelector('.slide-viewer').addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            if (touchEndX < touchStartX - 50) {
+                nextSlide();
+            }
+            if (touchEndX > touchStartX + 50) {
+                previousSlide();
+            }
+        }
+
+        // Initialize
+        updateSlideDisplay();
+    </script>
+</body>
+</html>
