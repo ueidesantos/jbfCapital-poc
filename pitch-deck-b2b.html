@@ -83,9 +83,12 @@
             opacity: 0.5;
         }
 
-        .nav-dot:hover {
+        .nav-dot:hover,
+        .nav-dot:focus {
             opacity: 1;
             transform: scale(1.2);
+            outline: 2px solid var(--primary-blue);
+            outline-offset: 2px;
         }
 
         .nav-dot.active {
@@ -93,6 +96,10 @@
             opacity: 1;
             width: 14px;
             height: 14px;
+        }
+
+        .nav-dot {
+            border: none;
         }
 
         /* Typography */
@@ -598,7 +605,7 @@
 <body>
     <div class="slide-container" id="slideContainer">
         <!-- Slide 1: Capa -->
-        <section class="slide" id="slide1">
+        <section class="slide" id="slide1" aria-label="Slide 1: Capa - JBF Capital">
             <h1>JBF Capital</h1>
             <div class="tagline">
                 Infraestrutura digital para originação, análise e aprovação de crédito
@@ -610,7 +617,7 @@
         </section>
 
         <!-- Slide 2: O Problema -->
-        <section class="slide" id="slide2">
+        <section class="slide" id="slide2" aria-label="Slide 2: O Problema - Ineficiência Operacional">
             <div class="content-wrapper">
                 <div class="slide-header">
                     <div class="slide-number">02</div>
@@ -646,7 +653,7 @@
         </section>
 
         <!-- Slide 3: O Mercado -->
-        <section class="slide" id="slide3">
+        <section class="slide" id="slide3" aria-label="Slide 3: O Mercado de Crédito no Brasil">
             <div class="content-wrapper">
                 <div class="slide-header">
                     <div class="slide-number">03</div>
@@ -678,7 +685,7 @@
 
                 <div class="market-insight">
                     <h3>Leitura estratégica</h3>
-                    <p>O mercado cresce mais rápido do que as operações tradicionais conseguem escalar. Apenas 30% da população tem acesso adequado a crédito, enquanto o estoque total supera R$ 5 trilhões.</p>
+                    <p>O mercado cresce mais rápido do que as operações tradicionais conseguem escalar. Apenas 30% da população tem acesso adequado ao crédito, enquanto o estoque total supera R$ 5 trilhões.</p>
                 </div>
 
                 <div class="sources">
@@ -688,7 +695,7 @@
         </section>
 
         <!-- Slide 4: A Solução -->
-        <section class="slide" id="slide4">
+        <section class="slide" id="slide4" aria-label="Slide 4: A Solução - Automação com Controle">
             <div class="content-wrapper">
                 <div class="slide-header">
                     <div class="slide-number">04</div>
@@ -729,7 +736,7 @@
         </section>
 
         <!-- Slide 5: Como Funciona -->
-        <section class="slide" id="slide5">
+        <section class="slide" id="slide5" aria-label="Slide 5: Como Funciona - Pipeline Operacional">
             <div class="content-wrapper">
                 <div class="slide-header">
                     <div class="slide-number">05</div>
@@ -776,7 +783,7 @@
         </section>
 
         <!-- Slide 6: Arquitetura Técnica -->
-        <section class="slide" id="slide6">
+        <section class="slide" id="slide6" aria-label="Slide 6: Arquitetura Técnica">
             <div class="content-wrapper">
                 <div class="slide-header">
                     <div class="slide-number">06</div>
@@ -845,7 +852,7 @@
         </section>
 
         <!-- Slide 7: Valor -->
-        <section class="slide" id="slide7">
+        <section class="slide" id="slide7" aria-label="Slide 7: Valor para a Instituição Financeira">
             <div class="content-wrapper">
                 <div class="slide-header">
                     <div class="slide-number">07</div>
@@ -887,7 +894,7 @@
         </section>
 
         <!-- Slide 8: Excelência Operacional -->
-        <section class="slide" id="slide8">
+        <section class="slide" id="slide8" aria-label="Slide 8: Excelência Operacional e Governança">
             <div class="content-wrapper">
                 <div class="slide-header">
                     <div class="slide-number">08</div>
@@ -940,7 +947,7 @@
         </section>
 
         <!-- Slide 9: Modelo de Parceria -->
-        <section class="slide" id="slide9">
+        <section class="slide" id="slide9" aria-label="Slide 9: Modelo de Parceria e Call to Action">
             <div class="content-wrapper">
                 <div class="slide-header">
                     <div class="slide-number">09</div>
@@ -986,17 +993,17 @@
     </div>
 
     <!-- Navigation Dots -->
-    <div class="nav-dots">
-        <div class="nav-dot active" data-slide="0"></div>
-        <div class="nav-dot" data-slide="1"></div>
-        <div class="nav-dot" data-slide="2"></div>
-        <div class="nav-dot" data-slide="3"></div>
-        <div class="nav-dot" data-slide="4"></div>
-        <div class="nav-dot" data-slide="5"></div>
-        <div class="nav-dot" data-slide="6"></div>
-        <div class="nav-dot" data-slide="7"></div>
-        <div class="nav-dot" data-slide="8"></div>
-    </div>
+    <nav class="nav-dots" aria-label="Navegação de slides">
+        <button class="nav-dot active" data-slide="0" aria-label="Ir para slide 1: Capa" tabindex="0"></button>
+        <button class="nav-dot" data-slide="1" aria-label="Ir para slide 2: O Problema" tabindex="0"></button>
+        <button class="nav-dot" data-slide="2" aria-label="Ir para slide 3: O Mercado" tabindex="0"></button>
+        <button class="nav-dot" data-slide="3" aria-label="Ir para slide 4: A Solução" tabindex="0"></button>
+        <button class="nav-dot" data-slide="4" aria-label="Ir para slide 5: Como Funciona" tabindex="0"></button>
+        <button class="nav-dot" data-slide="5" aria-label="Ir para slide 6: Arquitetura Técnica" tabindex="0"></button>
+        <button class="nav-dot" data-slide="6" aria-label="Ir para slide 7: Valor" tabindex="0"></button>
+        <button class="nav-dot" data-slide="7" aria-label="Ir para slide 8: Excelência Operacional" tabindex="0"></button>
+        <button class="nav-dot" data-slide="8" aria-label="Ir para slide 9: Modelo de Parceria" tabindex="0"></button>
+    </nav>
 
     <script>
         // Navigation functionality
@@ -1004,16 +1011,32 @@
         const slides = document.querySelectorAll('.slide');
         const navDots = document.querySelectorAll('.nav-dot');
 
+        // Debounce function for scroll performance
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+
         // Update active dot based on scroll position
-        container.addEventListener('scroll', () => {
+        const updateActiveDot = debounce(() => {
             const scrollPosition = container.scrollTop;
             const slideHeight = window.innerHeight;
             const currentSlide = Math.round(scrollPosition / slideHeight);
 
             navDots.forEach((dot, index) => {
                 dot.classList.toggle('active', index === currentSlide);
+                dot.setAttribute('aria-current', index === currentSlide ? 'true' : 'false');
             });
-        });
+        }, 100);
+
+        container.addEventListener('scroll', updateActiveDot);
 
         // Click navigation
         navDots.forEach((dot, index) => {
@@ -1028,6 +1051,11 @@
 
         // Keyboard navigation
         document.addEventListener('keydown', (e) => {
+            // Skip if user is typing in an input field
+            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
+                return;
+            }
+
             const slideHeight = window.innerHeight;
             const currentScroll = container.scrollTop;
             const currentSlide = Math.round(currentScroll / slideHeight);
