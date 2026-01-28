@@ -260,6 +260,38 @@ background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 1
 - Valores destacados quando relevante
 - Evitar 3D e efeitos desnecessários
 
+### Citações e Fontes de Dados
+
+**Formatação de Citações**
+- Fonte: 8-10pt (Segoe UI Regular)
+- Cor: #94A3B8 (Light Slate)
+- Posicionamento: Rodapé do slide, acima da numeração
+- Alinhamento: Esquerda ou centro, dependendo do layout
+
+**Formato Padrão**:
+```
+Fonte: [Instituição] - [Nome do Estudo/Relatório], [Ano]
+```
+
+**Múltiplas Fontes**:
+```
+Fontes: [Instituição 1] ([Ano]), [Instituição 2] ([Ano]), [Instituição 3] ([Ano])
+```
+
+**Exemplos**:
+- Fonte única: "Fonte: Banco Central do Brasil - Estatísticas Monetárias, Dez/2024"
+- Múltiplas: "Fontes: Banco Central do Brasil (2024), FEBRABAN (2024), Fitch Ratings (2024)"
+
+**Instituições Confiáveis para Citar**:
+- Banco Central do Brasil
+- FEBRABAN (Federação Brasileira de Bancos)
+- IBGE (Instituto Brasileiro de Geografia e Estatística)
+- FGV (Fundação Getúlio Vargas)
+- Serasa Experian
+- Fitch Ratings, Moody's, S&P
+- Instituto Locomotiva
+- IPEA (Instituto de Pesquisa Econômica Aplicada)
+
 ---
 
 ## ✅ Checklist de Qualidade
@@ -276,6 +308,7 @@ background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 1
 - [ ] Contraste adequado (texto sobre fundo)
 - [ ] Mensagem clara e objetiva
 - [ ] Gramática e ortografia revisadas
+- [ ] **Fontes de dados citadas adequadamente**
 
 ---
 

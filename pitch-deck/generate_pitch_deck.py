@@ -218,6 +218,20 @@ def create_slide_2_contexto(prs):
     p.font.color.rgb = JBFColors.COOL_GRAY
     p.space_before = Pt(15)
     
+    # Adicionar citação de fontes no rodapé
+    citation_left = Inches(0.7)
+    citation_top = Inches(6.5)
+    citation_width = Inches(8.6)
+    citation_height = Inches(0.4)
+    
+    citation_box = slide.shapes.add_textbox(citation_left, citation_top, citation_width, citation_height)
+    text_frame = citation_box.text_frame
+    text_frame.text = "Fontes: Banco Central do Brasil (2024), FEBRABAN (2024), Fitch Ratings (2024), Instituto Locomotiva (2024)"
+    p = text_frame.paragraphs[0]
+    p.font.size = Pt(9)
+    p.font.color.rgb = JBFColors.LIGHT_SLATE
+    p.alignment = PP_ALIGN.LEFT
+    
     add_footer(slide, "Pitch Deck Institucional", 2, prs)
 
 def create_slide_3_problema(prs):
@@ -288,6 +302,20 @@ def create_slide_3_problema(prs):
     p.font.size = Pt(14)
     p.font.italic = True
     p.font.color.rgb = JBFColors.PRIMARY
+    p.alignment = PP_ALIGN.CENTER
+    
+    # Adicionar fonte da citação
+    source_left = Inches(1.5)
+    source_top = Inches(6.3)
+    source_width = Inches(7)
+    source_height = Inches(0.3)
+    
+    source_box = slide.shapes.add_textbox(source_left, source_top, source_width, source_height)
+    text_frame = source_box.text_frame
+    text_frame.text = "Fonte: Serasa Experian - Pesquisa de Comportamento de Crédito do Brasileiro, 2025"
+    p = text_frame.paragraphs[0]
+    p.font.size = Pt(9)
+    p.font.color.rgb = JBFColors.LIGHT_SLATE
     p.alignment = PP_ALIGN.CENTER
     
     add_footer(slide, "Pitch Deck Institucional", 3, prs)

@@ -32,6 +32,7 @@ Guia completo de branding e design contendo:
 - 🖼️ **Diretrizes de Imagens**: Estilo fotográfico, ilustrações e ícones
 - 🏢 **Posicionamento de Logotipo**: Regras de uso em diferentes contextos
 - 📊 **Gráficos e Dados**: Cores e estilos para visualizações
+- 📚 **Citações e Fontes**: Formatação de referências de dados
 - ✅ **Checklist de Qualidade**: Verificações antes de finalizar
 
 ### 2. STORYTELLING.md
@@ -39,8 +40,8 @@ Estrutura completa do pitch deck (16 slides) contendo:
 
 #### Slides Principais:
 1. **Capa** - Apresentação da marca
-2. **Contexto & Oportunidade** - Mercado e potencial
-3. **Problema** - Dores do mercado
+2. **Contexto & Oportunidade** - Mercado e potencial (📚 com fontes de dados)
+3. **Problema** - Dores do mercado (📚 com citação referenciada)
 4. **Solução** - Como a JBF Capital resolve
 5. **Proposta de Valor** - Benefícios claros
 6. **Serviços & Produtos** - Portfólio
@@ -65,6 +66,7 @@ Para cada slide há:
 - ✅ Elementos visuais recomendados
 - ✅ Layout sugerido
 - ✅ Conteúdo de exemplo
+- ✅ **Fontes de dados citadas (quando aplicável)**
 
 ## 🚀 Como Usar
 

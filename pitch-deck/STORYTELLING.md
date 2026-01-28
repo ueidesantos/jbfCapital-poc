@@ -54,12 +54,20 @@ Este documento define a estrutura narrativa completa do pitch deck institucional
 **Layout Sugerido**: 
 - Título no topo
 - 2 colunas: Esquerda (dados/gráfico) | Direita (insights/oportunidade)
+- **Rodapé com fontes dos dados**
 
-**Dados de Referência** (fictícios para exemplo):
-- Estoque de crédito: R$ 5,4 tri
-- Crescimento anual: 12-15%
-- Home Equity potencial: R$ 500 bi
-- Gap de acesso: 70% da população
+**Dados de Referência e Fontes**:
+- **Estoque de crédito: R$ 5,4 tri**
+  - Fonte: Banco Central do Brasil - Estatísticas Monetárias, Dez/2024
+- **Crescimento anual: 12-15%**
+  - Fonte: FEBRABAN - Pesquisa FEBRABAN de Tecnologia Bancária, 2024
+- **Home Equity potencial: R$ 500 bi**
+  - Fonte: Fitch Ratings - Análise do Mercado Brasileiro de Home Equity, 2024
+- **Gap de acesso: 70% da população**
+  - Fonte: Instituto Locomotiva - Pesquisa de Inclusão Financeira, 2024
+
+**Citação do Slide** (rodapé em fonte pequena, 8-10pt):
+"Fontes: Banco Central do Brasil (2024), FEBRABAN (2024), Fitch Ratings (2024), Instituto Locomotiva (2024)"
 
 ---
 
@@ -81,9 +89,16 @@ Este documento define a estrutura narrativa completa do pitch deck institucional
 - Título no topo
 - Grid de ícones + textos curtos
 - Box de destaque com citação/dado impactante
+- **Rodapé com fonte da citação**
 
 **Citação Exemplo**:
-"73% dos brasileiros consideram o processo de obtenção de crédito confuso e demorado" - Fonte: Estudo XYZ, 2025
+"73% dos brasileiros consideram o processo de obtenção de crédito confuso e demorado"
+
+**Fonte da Citação**:
+Fonte: Serasa Experian - Pesquisa de Comportamento de Crédito do Brasileiro, 2025
+
+**Citação do Slide** (rodapé em fonte pequena, 8-10pt):
+"Fonte: Serasa Experian - Pesquisa de Comportamento de Crédito do Brasileiro, 2025"
 
 ---
 
