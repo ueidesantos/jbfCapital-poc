@@ -154,6 +154,17 @@ Fonte: Serasa Experian - Pesquisa de Comportamento de Crédito do Brasileiro, 20
 
 **Layout Sugerido**: 3 colunas com ícones e bullet points
 
+**Fontes dos Dados**:
+- **Taxas até 40% menores**: Comparativo interno JBF Capital vs. média de mercado
+  - Fonte: Análise JBF Capital baseada em dados do Banco Central do Brasil - Taxas de Juros, Jan/2024
+- **Aprovação em 48h vs. 30-60 dias**: Benchmark de mercado
+  - Fonte: FEBRABAN - Relatório de Tecnologia e Digitalização Bancária, 2024
+- **Redução de CAC em 35%**: Análise de parceiros
+  - Fonte: Dados internos JBF Capital - Análise de Eficiência de Parceiros, 2024
+
+**Citação do Slide** (rodapé em fonte pequena, 8-10pt):
+"Fontes: Banco Central do Brasil (2024), FEBRABAN (2024), Análise Interna JBF Capital (2024)"
+
 ---
 
 ### Slide 6: SERVIÇOS & PRODUTOS
@@ -173,6 +184,15 @@ Fonte: Serasa Experian - Pesquisa de Comportamento de Crédito do Brasileiro, 20
 | **Crédito Empresarial** | Capital de giro para PMEs | R$ 50-500k | 1,5-2,0% a.m. |
 
 **Layout Sugerido**: Tabela clean ou cards visuais com ícones
+
+**Fontes dos Dados de Taxas**:
+- **Taxas de Juros**: Médias praticadas no mercado brasileiro
+  - Fonte: Banco Central do Brasil - Sistema de Taxas de Juros, Jan/2024
+- **Ticket Médio**: Análise de mercado e benchmarking setorial
+  - Fonte: FGV - Estudo sobre Produtos de Crédito no Brasil, 2024
+
+**Citação do Slide** (rodapé em fonte pequena, 8-10pt):
+"Fontes: Banco Central do Brasil (2024), FGV (2024)"
 
 ---
 
@@ -442,6 +462,17 @@ Fonte: Serasa Experian - Pesquisa de Comportamento de Crédito do Brasileiro, 20
 
 **Layout Sugerido**: Tabela comparativa (superior) + 3 cards de testemunhos (inferior)
 
+**Fontes dos Dados Comparativos**:
+- **Taxas de Juros (Tradicional vs. JBF Capital)**: 
+  - Fonte: Banco Central do Brasil - Sistema de Taxas de Juros, Dez/2024
+- **Tempo de Aprovação**: Benchmark de processos digitais
+  - Fonte: McKinsey - Digital Banking in Brazil Report, 2024
+- **Economia Média do Cliente**: Cálculo baseado em contratos reais
+  - Fonte: Dados internos JBF Capital - Análise de Portfólio, 2024
+
+**Citação do Slide** (rodapé em fonte pequena, 8-10pt):
+"Fontes: Banco Central do Brasil (2024), McKinsey (2024), Dados Internos JBF Capital (2024)"
+
 ---
 
 ### Slide 13: TRAÇÃO & RESULTADOS
@@ -467,6 +498,17 @@ Fonte: Serasa Experian - Pesquisa de Comportamento de Crédito do Brasileiro, 20
 **Layout Sugerido**: 
 - Superior: 2-3 gráficos lado a lado
 - Inferior: Grid de métricas (6 boxes)
+
+**Fontes dos Dados de Tração**:
+- **Volume Originado e Métricas Operacionais**: 
+  - Fonte: Dados Internos JBF Capital - Dashboard Executivo, Jan/2024
+- **NPS (Net Promoter Score)**: Pesquisa de satisfação
+  - Fonte: Pesquisa de Satisfação JBF Capital realizada por instituto independente, Dez/2024
+- **Taxa de Conversão e Crescimento**: Análise de funil
+  - Fonte: Dados Internos JBF Capital - Analytics de Conversão, 2024
+
+**Citação do Slide** (rodapé em fonte pequena, 8-10pt):
+"Fontes: Dados Internos JBF Capital (2024), Pesquisa de Satisfação Independente (2024)"
 
 ---
 
