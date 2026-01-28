@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JBF Capital - Pitch Deck</title>
+    <title>JBF Capital - Apresentação Institucional</title>
     <style>
         * {
             margin: 0;
@@ -12,110 +12,89 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-            background: #1a1a1a;
-            overflow: hidden;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #0f172a;
             color: white;
-            padding: 1rem 2rem;
-            text-align: center;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-            z-index: 100;
-        }
-
-        .header h1 {
-            font-size: 1.8rem;
-            margin-bottom: 0.2rem;
-        }
-
-        .header p {
-            font-size: 0.9rem;
-            opacity: 0.95;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
         }
 
         .presentation-container {
-            flex: 1;
+            width: 100%;
+            max-width: 1400px;
+            padding: 20px;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            position: relative;
-            padding: 2rem;
+        }
+
+        .slide-viewer {
+            width: 100%;
+            max-width: 1280px;
             background: #1a1a1a;
-        }
-
-        .slide-wrapper {
-            max-width: 90vw;
-            max-height: calc(100vh - 200px);
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
             position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
 
-        .slide {
-            display: none;
-            max-width: 100%;
-            max-height: 100%;
+        .slide-image-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            background: #0B1120;
+        }
+
+        .slide-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             object-fit: contain;
-            border-radius: 8px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-            animation: fadeIn 0.3s ease-in;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
         }
 
-        .slide.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .slide-image.active {
+            opacity: 1;
         }
 
         .controls {
-            position: fixed;
-            bottom: 2rem;
-            left: 50%;
-            transform: translateX(-50%);
             display: flex;
-            gap: 1rem;
+            justify-content: space-between;
             align-items: center;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-            z-index: 100;
+            padding: 20px 30px;
+            background: rgba(15, 23, 42, 0.95);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 10px;
         }
 
         .btn {
+            padding: 10px 20px;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
             border: none;
-            padding: 0.8rem 1.5rem;
-            border-radius: 25px;
+            border-radius: 6px;
+            color: white;
             cursor: pointer;
-            font-size: 1rem;
+            font-size: 14px;
             font-weight: 600;
-            transition: all 0.3s ease;
+            transition: all 0.2s;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 8px;
         }
 
         .btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
         }
 
         .btn:active {
@@ -125,276 +104,271 @@
         .btn:disabled {
             opacity: 0.5;
             cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-icon {
+            font-size: 16px;
         }
 
         .slide-counter {
-            color: #1e293b;
+            font-size: 16px;
             font-weight: 600;
-            font-size: 1rem;
-            padding: 0 1rem;
-            min-width: 80px;
-            text-align: center;
-        }
-
-        .nav-arrow {
+            color: #94a3b8;
             display: flex;
             align-items: center;
-            justify-content: center;
-            width: 50px;
-            height: 50px;
-            background: rgba(102, 126, 234, 0.2);
-            border-radius: 50%;
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            z-index: 50;
+            gap: 8px;
         }
 
-        .nav-arrow:hover {
-            background: rgba(102, 126, 234, 0.4);
-            transform: translateY(-50%) scale(1.1);
-        }
-
-        .nav-arrow.left {
-            left: 2rem;
-        }
-
-        .nav-arrow.right {
-            right: 2rem;
-        }
-
-        .nav-arrow svg {
-            width: 24px;
-            height: 24px;
-            fill: white;
+        .slide-counter .current {
+            color: white;
+            font-size: 24px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .fullscreen-btn {
-            position: fixed;
-            top: 1rem;
-            right: 1rem;
-            background: rgba(255, 255, 255, 0.9);
-            border: none;
-            padding: 0.8rem;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            z-index: 100;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .fullscreen-btn:hover {
-            background: white;
-            transform: scale(1.1);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: none;
         }
 
-        .fullscreen-btn svg {
-            width: 20px;
-            height: 20px;
-            fill: #667eea;
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
         }
 
-        .back-link {
-            position: fixed;
-            top: 1rem;
-            left: 1rem;
-            background: rgba(255, 255, 255, 0.9);
-            color: #667eea;
-            text-decoration: none;
-            padding: 0.8rem 1.5rem;
-            border-radius: 25px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            z-index: 100;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+        .header h1 {
+            font-size: 32px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
         }
 
-        .back-link:hover {
-            background: white;
-            transform: translateX(-3px);
+        .header p {
+            color: #94a3b8;
+            font-size: 16px;
         }
 
+        /* Keyboard hint */
+        .keyboard-hint {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            font-size: 13px;
+            color: #94a3b8;
+            text-align: center;
+        }
+
+        .keyboard-hint kbd {
+            padding: 3px 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 12px;
+            color: white;
+            margin: 0 3px;
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
-            .header h1 {
-                font-size: 1.3rem;
-            }
-
-            .header p {
-                font-size: 0.8rem;
+            .presentation-container {
+                padding: 10px;
             }
 
             .controls {
-                padding: 0.8rem 1rem;
+                flex-direction: column;
+                gap: 15px;
+                padding: 15px;
+            }
+
+            .nav-buttons {
+                width: 100%;
+                justify-content: space-between;
             }
 
             .btn {
-                padding: 0.6rem 1rem;
-                font-size: 0.9rem;
+                flex: 1;
+                justify-content: center;
             }
 
-            .slide-counter {
-                font-size: 0.9rem;
-                min-width: 60px;
-            }
-
-            .nav-arrow {
-                width: 40px;
-                height: 40px;
-            }
-
-            .nav-arrow.left {
-                left: 1rem;
-            }
-
-            .nav-arrow.right {
-                right: 1rem;
-            }
-
-            .back-link {
-                padding: 0.6rem 1rem;
-                font-size: 0.9rem;
+            .keyboard-hint {
+                font-size: 11px;
             }
         }
 
-        .loading {
-            color: white;
-            text-align: center;
-            font-size: 1.2rem;
+        /* Fullscreen mode */
+        .presentation-container:fullscreen {
+            max-width: none;
+            padding: 0;
+        }
+
+        .presentation-container:fullscreen .header,
+        .presentation-container:fullscreen .keyboard-hint {
+            display: none;
+        }
+
+        .presentation-container:fullscreen .slide-viewer {
+            max-width: none;
+            height: 100vh;
+            border-radius: 0;
         }
     </style>
 </head>
 <body>
-    <a href="../index.html" class="back-link">
-        ← Voltar
-    </a>
-
-    <button class="fullscreen-btn" id="fullscreenBtn" title="Tela cheia">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>
-        </svg>
-    </button>
-
-    <div class="header">
-        <h1>📊 JBF Capital - Pitch Deck</h1>
-        <p>Apresentação Institucional</p>
-    </div>
-
     <div class="presentation-container">
-        <div class="nav-arrow left" id="prevArrow">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
-            </svg>
+        <div class="header">
+            <h1>JBF Capital - Pitch Deck Institucional</h1>
+            <p>Apresentação baseada nos slides HTML do diretório teste_apresentacao</p>
         </div>
 
-        <div class="slide-wrapper">
-            <img src="imagens_exemplo/Screenshot_1.png" alt="Slide 1" class="slide active" id="slide1">
-            <img src="imagens_exemplo/Screenshot_2.png" alt="Slide 2" class="slide" id="slide2">
-            <img src="imagens_exemplo/Screenshot_3.png" alt="Slide 3" class="slide" id="slide3">
-            <img src="imagens_exemplo/Screenshot_4.png" alt="Slide 4" class="slide" id="slide4">
-            <img src="imagens_exemplo/Screenshot_5.png" alt="Slide 5" class="slide" id="slide5">
-            <img src="imagens_exemplo/Screenshot_6.png" alt="Slide 6" class="slide" id="slide6">
-            <img src="imagens_exemplo/Screenshot_7.png" alt="Slide 7" class="slide" id="slide7">
-            <img src="imagens_exemplo/Screenshot_8.png" alt="Slide 8" class="slide" id="slide8">
-            <img src="imagens_exemplo/Screenshot_9.png" alt="Slide 9" class="slide" id="slide9">
+        <div class="slide-viewer">
+            <div class="slide-image-container">
+                <img src="slides_from_html/Slide_1.png" alt="Slide 1" class="slide-image active" data-slide="1">
+                <img src="slides_from_html/Slide_2.png" alt="Slide 2" class="slide-image" data-slide="2">
+                <img src="slides_from_html/Slide_3.png" alt="Slide 3" class="slide-image" data-slide="3">
+                <img src="slides_from_html/Slide_4.png" alt="Slide 4" class="slide-image" data-slide="4">
+                <img src="slides_from_html/Slide_5.png" alt="Slide 5" class="slide-image" data-slide="5">
+                <img src="slides_from_html/Slide_6.png" alt="Slide 6" class="slide-image" data-slide="6">
+                <img src="slides_from_html/Slide_7.png" alt="Slide 7" class="slide-image" data-slide="7">
+                <img src="slides_from_html/Slide_8.png" alt="Slide 8" class="slide-image" data-slide="8">
+                <img src="slides_from_html/Slide_9.png" alt="Slide 9" class="slide-image" data-slide="9">
+            </div>
+
+            <div class="controls">
+                <div class="nav-buttons">
+                    <button class="btn" onclick="previousSlide()">
+                        <span class="btn-icon">←</span>
+                        Anterior
+                    </button>
+                    <button class="btn" onclick="nextSlide()">
+                        Próximo
+                        <span class="btn-icon">→</span>
+                    </button>
+                </div>
+
+                <div class="slide-counter">
+                    <span class="current" id="currentSlide">1</span>
+                    <span>/</span>
+                    <span id="totalSlides">9</span>
+                </div>
+
+                <button class="btn fullscreen-btn" onclick="toggleFullscreen()">
+                    <span class="btn-icon">⛶</span>
+                    Tela Cheia
+                </button>
+            </div>
         </div>
 
-        <div class="nav-arrow right" id="nextArrow">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
-            </svg>
+        <div class="keyboard-hint">
+            <strong>Atalhos:</strong>
+            <kbd>←</kbd> <kbd>→</kbd> Navegar |
+            <kbd>Space</kbd> Próximo |
+            <kbd>Home</kbd> Primeiro |
+            <kbd>End</kbd> Último |
+            <kbd>F11</kbd> Tela cheia
         </div>
-    </div>
-
-    <div class="controls">
-        <button class="btn" id="prevBtn">
-            <span>←</span>
-            <span>Anterior</span>
-        </button>
-        <div class="slide-counter">
-            <span id="currentSlide">1</span> / <span id="totalSlides">9</span>
-        </div>
-        <button class="btn" id="nextBtn">
-            <span>Próximo</span>
-            <span>→</span>
-        </button>
     </div>
 
     <script>
         let currentSlide = 1;
         const totalSlides = 9;
-        const slides = document.querySelectorAll('.slide');
-        
-        function showSlide(n) {
-            if (n > totalSlides) {
-                currentSlide = totalSlides;
-            } else if (n < 1) {
-                currentSlide = 1;
-            } else {
-                currentSlide = n;
+
+        function updateSlideDisplay() {
+            // Hide all slides
+            document.querySelectorAll('.slide-image').forEach(img => {
+                img.classList.remove('active');
+            });
+
+            // Show current slide
+            const activeSlide = document.querySelector(`.slide-image[data-slide="${currentSlide}"]`);
+            if (activeSlide) {
+                activeSlide.classList.add('active');
             }
 
-            slides.forEach(slide => slide.classList.remove('active'));
-            slides[currentSlide - 1].classList.add('active');
-
+            // Update counter
             document.getElementById('currentSlide').textContent = currentSlide;
 
             // Update button states
-            document.getElementById('prevBtn').disabled = currentSlide === 1;
-            document.getElementById('nextBtn').disabled = currentSlide === totalSlides;
+            document.querySelector('.btn:first-child').disabled = currentSlide === 1;
+            document.querySelectorAll('.btn')[1].disabled = currentSlide === totalSlides;
         }
 
         function nextSlide() {
-            showSlide(currentSlide + 1);
-        }
-
-        function prevSlide() {
-            showSlide(currentSlide - 1);
-        }
-
-        // Event listeners
-        document.getElementById('nextBtn').addEventListener('click', nextSlide);
-        document.getElementById('prevBtn').addEventListener('click', prevSlide);
-        document.getElementById('nextArrow').addEventListener('click', nextSlide);
-        document.getElementById('prevArrow').addEventListener('click', prevSlide);
-
-        // Keyboard navigation
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowRight' || e.key === ' ') {
-                e.preventDefault();
-                nextSlide();
-            } else if (e.key === 'ArrowLeft') {
-                e.preventDefault();
-                prevSlide();
-            } else if (e.key === 'Home') {
-                e.preventDefault();
-                showSlide(1);
-            } else if (e.key === 'End') {
-                e.preventDefault();
-                showSlide(totalSlides);
+            if (currentSlide < totalSlides) {
+                currentSlide++;
+                updateSlideDisplay();
             }
-        });
+        }
 
-        // Fullscreen functionality
-        document.getElementById('fullscreenBtn').addEventListener('click', () => {
+        function previousSlide() {
+            if (currentSlide > 1) {
+                currentSlide--;
+                updateSlideDisplay();
+            }
+        }
+
+        function goToSlide(slideNumber) {
+            if (slideNumber >= 1 && slideNumber <= totalSlides) {
+                currentSlide = slideNumber;
+                updateSlideDisplay();
+            }
+        }
+
+        function toggleFullscreen() {
+            const container = document.querySelector('.presentation-container');
             if (!document.fullscreenElement) {
-                document.documentElement.requestFullscreen();
+                container.requestFullscreen().catch(err => {
+                    console.log('Erro ao entrar em tela cheia:', err);
+                });
             } else {
                 document.exitFullscreen();
             }
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            switch(e.key) {
+                case 'ArrowRight':
+                case ' ':
+                    e.preventDefault();
+                    nextSlide();
+                    break;
+                case 'ArrowLeft':
+                    e.preventDefault();
+                    previousSlide();
+                    break;
+                case 'Home':
+                    e.preventDefault();
+                    goToSlide(1);
+                    break;
+                case 'End':
+                    e.preventDefault();
+                    goToSlide(totalSlides);
+                    break;
+            }
         });
 
-        // Touch swipe support
+        // Touch/swipe support
         let touchStartX = 0;
         let touchEndX = 0;
 
-        document.addEventListener('touchstart', (e) => {
+        document.querySelector('.slide-viewer').addEventListener('touchstart', (e) => {
             touchStartX = e.changedTouches[0].screenX;
         });
 
-        document.addEventListener('touchend', (e) => {
+        document.querySelector('.slide-viewer').addEventListener('touchend', (e) => {
             touchEndX = e.changedTouches[0].screenX;
             handleSwipe();
         });
@@ -404,12 +378,12 @@
                 nextSlide();
             }
             if (touchEndX > touchStartX + 50) {
-                prevSlide();
+                previousSlide();
             }
         }
 
         // Initialize
-        showSlide(1);
+        updateSlideDisplay();
     </script>
 </body>
 </html>

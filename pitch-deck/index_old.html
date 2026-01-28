@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JBF Capital - Pitch Deck Preview</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background: #f8fafc;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(102, 126, 234, 0.3);
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+        }
+
+        .info-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .info-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid #667eea;
+        }
+
+        .info-card h3 {
+            color: #667eea;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .info-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .info-card li {
+            padding: 0.5rem 0;
+            color: #475569;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .info-card li:before {
+            content: "✓";
+            color: #10B981;
+            font-weight: bold;
+        }
+
+        .slides-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .slide-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .slide-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(102, 126, 234, 0.2);
+        }
+
+        .slide-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .slide-number {
+            background: rgba(255, 255, 255, 0.2);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .slide-title h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .slide-title p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .slide-content {
+            padding: 1.5rem;
+        }
+
+        .slide-message {
+            background: #f1f5f9;
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 3px solid #667eea;
+            margin-bottom: 1rem;
+        }
+
+        .slide-message strong {
+            color: #667eea;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .slide-message p {
+            color: #475569;
+            line-height: 1.6;
+        }
+
+        .slide-elements {
+            margin-top: 1rem;
+        }
+
+        .slide-elements h4 {
+            color: #1e293b;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .slide-elements ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .slide-elements li {
+            padding: 0.3rem 0;
+            color: #64748b;
+            font-size: 0.9rem;
+            padding-left: 1.2rem;
+            position: relative;
+        }
+
+        .slide-elements li:before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #10B981;
+            color: white;
+            padding: 0.2rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-left: 0.5rem;
+        }
+
+        .badge.new {
+            background: #667eea;
+        }
+
+        .resources {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .resource-link {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-decoration: none;
+            color: inherit;
+            border: 2px solid #e2e8f0;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .resource-link:hover {
+            border-color: #667eea;
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+        }
+
+        .resource-icon {
+            font-size: 2.5rem;
+        }
+
+        .resource-text h4 {
+            color: #1e293b;
+            margin-bottom: 0.3rem;
+        }
+
+        .resource-text p {
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        .section-title {
+            color: #1e293b;
+            font-size: 2rem;
+            margin: 3rem 0 1.5rem 0;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #667eea;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .slides-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 JBF Capital - Pitch Deck</h1>
+            <p>Identidade Visual e Template de Apresentação Corporativa</p>
+        </div>
+
+        <div class="info-cards">
+            <div class="info-card">
+                <h3>📋 Apresentação Completa</h3>
+                <ul>
+                    <li>9 slides profissionais</li>
+                    <li>Design moderno e impactante</li>
+                    <li>Navegação interativa</li>
+                    <li>Suporte a tela cheia</li>
+                    <li>Controles de teclado e touch</li>
+                </ul>
+            </div>
+
+            <div class="info-card">
+                <h3>🎨 Identidade Visual</h3>
+                <ul>
+                    <li>Paleta de cores definida</li>
+                    <li>Tipografia corporativa</li>
+                    <li>Padrões visuais consistentes</li>
+                    <li>Guidelines de uso</li>
+                    <li>Templates reutilizáveis</li>
+                </ul>
+            </div>
+
+            <div class="info-card">
+                <h3>🚀 Recursos Disponíveis</h3>
+                <ul>
+                    <li>Apresentação interativa (.html)</li>
+                    <li>PowerPoint original (.pptx)</li>
+                    <li>Documentação completa</li>
+                    <li>Imagens em alta qualidade</li>
+                    <li>Citações de fontes de dados</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="resources">
+            <a href="presentation.html" class="resource-link" style="grid-column: 1 / -1; border: 3px solid #667eea; background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);">
+                <div class="resource-icon" style="font-size: 3rem;">🎬</div>
+                <div class="resource-text">
+                    <h4 style="color: #667eea; font-size: 1.5rem;">Ver Apresentação Completa</h4>
+                    <p style="font-size: 1.1rem;">Visualizar os 9 slides do pitch deck com navegação interativa</p>
+                </div>
+            </a>
+
+            <a href="README.md" class="resource-link">
+                <div class="resource-icon">📘</div>
+                <div class="resource-text">
+                    <h4>README</h4>
+                    <p>Guia completo de uso e instruções</p>
+                </div>
+            </a>
+
+            <a href="IDENTIDADE_VISUAL.md" class="resource-link">
+                <div class="resource-icon">🎨</div>
+                <div class="resource-text">
+                    <h4>Identidade Visual</h4>
+                    <p>Cores, tipografia e padrões de design</p>
+                </div>
+            </a>
+
+            <a href="STORYTELLING.md" class="resource-link">
+                <div class="resource-icon">📖</div>
+                <div class="resource-text">
+                    <h4>Storytelling</h4>
+                    <p>Estrutura e conteúdo dos slides</p>
+                </div>
+            </a>
+
+            <a href="JBF_Capital_Pitch_Deck.pptx" class="resource-link" download>
+                <div class="resource-icon">📊</div>
+                <div class="resource-text">
+                    <h4>Download PowerPoint</h4>
+                    <p>Template pronto para edição</p>
+                </div>
+            </a>
+
+            <a href="CITACOES.md" class="resource-link">
+                <div class="resource-icon">📚</div>
+                <div class="resource-text">
+                    <h4>Citações e Fontes</h4>
+                    <p>Referências de dados utilizados</p>
+                </div>
+            </a>
+        </div>
+
+        <h2 class="section-title">Galeria de Slides</h2>
+        <p style="text-align: center; color: #64748b; margin-bottom: 2rem;">
+            Confira uma prévia dos 9 slides da apresentação. <a href="presentation.html" style="color: #667eea; font-weight: 600;">Clique aqui para ver a apresentação completa</a>.
+        </p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 3rem;">
+            <div style="background: white; padding: 1rem; border-radius: 12px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">
+                <img src="imagens_exemplo/Screenshot_1.png" alt="Slide 1" style="width: 100%; border-radius: 8px; margin-bottom: 0.5rem;">
+                <p style="text-align: center; color: #475569; font-weight: 600;">Slide 1</p>
+            </div>
+            <div style="background: white; padding: 1rem; border-radius: 12px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">
+                <img src="imagens_exemplo/Screenshot_2.png" alt="Slide 2" style="width: 100%; border-radius: 8px; margin-bottom: 0.5rem;">
+                <p style="text-align: center; color: #475569; font-weight: 600;">Slide 2</p>
+            </div>
+            <div style="background: white; padding: 1rem; border-radius: 12px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">
+                <img src="imagens_exemplo/Screenshot_3.png" alt="Slide 3" style="width: 100%; border-radius: 8px; margin-bottom: 0.5rem;">
+                <p style="text-align: center; color: #475569; font-weight: 600;">Slide 3</p>
+            </div>
+            <div style="background: white; padding: 1rem; border-radius: 12px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">
+                <img src="imagens_exemplo/Screenshot_4.png" alt="Slide 4" style="width: 100%; border-radius: 8px; margin-bottom: 0.5rem;">
+                <p style="text-align: center; color: #475569; font-weight: 600;">Slide 4</p>
+            </div>
+            <div style="background: white; padding: 1rem; border-radius: 12px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">
+                <img src="imagens_exemplo/Screenshot_5.png" alt="Slide 5" style="width: 100%; border-radius: 8px; margin-bottom: 0.5rem;">
+                <p style="text-align: center; color: #475569; font-weight: 600;">Slide 5</p>
+            </div>
+            <div style="background: white; padding: 1rem; border-radius: 12px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">
+                <img src="imagens_exemplo/Screenshot_6.png" alt="Slide 6" style="width: 100%; border-radius: 8px; margin-bottom: 0.5rem;">
+                <p style="text-align: center; color: #475569; font-weight: 600;">Slide 6</p>
+            </div>
+            <div style="background: white; padding: 1rem; border-radius: 12px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">
+                <img src="imagens_exemplo/Screenshot_7.png" alt="Slide 7" style="width: 100%; border-radius: 8px; margin-bottom: 0.5rem;">
+                <p style="text-align: center; color: #475569; font-weight: 600;">Slide 7</p>
+            </div>
+            <div style="background: white; padding: 1rem; border-radius: 12px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">
+                <img src="imagens_exemplo/Screenshot_8.png" alt="Slide 8" style="width: 100%; border-radius: 8px; margin-bottom: 0.5rem;">
+                <p style="text-align: center; color: #475569; font-weight: 600;">Slide 8</p>
+            </div>
+            <div style="background: white; padding: 1rem; border-radius: 12px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">
+                <img src="imagens_exemplo/Screenshot_9.png" alt="Slide 9" style="width: 100%; border-radius: 8px; margin-bottom: 0.5rem;">
+                <p style="text-align: center; color: #475569; font-weight: 600;">Slide 9</p>
+            </div>
+        </div>
+
+        <div style="margin-top: 3rem; padding: 2rem; background: white; border-radius: 12px; text-align: center;">
+            <h3 style="color: #667eea; margin-bottom: 1rem;">🚀 Pronto para apresentar?</h3>
+            <p style="color: #64748b; margin-bottom: 1.5rem;">
+                Acesse a apresentação interativa completa com navegação por teclado, touch e controles visuais
+            </p>
+            <a href="presentation.html" style="display: inline-block; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 1rem 2rem; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 1.1rem;">
+                Ver Apresentação Completa →
+            </a>
+        </div>
+
+        <div style="margin-top: 3rem; padding: 2rem; background: white; border-radius: 12px; text-align: center;">
+            <h3 style="color: #667eea; margin-bottom: 1rem;">🚀 Pronto para usar?</h3>
+            <p style="color: #64748b; margin-bottom: 1.5rem;">
+                Acesse a apresentação completa ou baixe os recursos disponíveis
+            </p>
+            <a href="../index.html" style="display: inline-block; background: #667eea; color: white; padding: 1rem 2rem; border-radius: 8px; text-decoration: none; font-weight: bold;">
+                ← Voltar para Home
+            </a>
+        </div>
+    </div>
+</body>
+</html>
